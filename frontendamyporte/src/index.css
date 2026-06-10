@@ -1,2 +1,5 @@
 /* fffffffff */
 @import "tailwindcss";
+.fff{
+    border: 1px red solid ;
+}
