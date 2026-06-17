@@ -12,12 +12,13 @@ function App() {
 
   return (
     <>
-    <Header/>
-    <Routes>
+    {/* <Header/> */}
+    {/* <Routes>
       <Route path="/login" element={<Login/>}/>
             <Route path="/invoices" element={<Invoices/>}/>
 
-    </Routes>
+    </Routes> */}
+    <Invoices/>
 
     </>
   )
