@@ -4,6 +4,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import {motion,AnimatePresence} from "framer-motion";
+
 export default function invoices() {
   return (
     <div>
@@ -58,6 +60,15 @@ export default function invoices() {
 
 
 
+    <div className="min-h-screen flex bg-linear-to-b from-[#faf6ef] to-[#f0e5d2] items-center justify-center p-6 fff"></div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+      <motion.div initial={{opacity:0, y:30}} animate={{opacity:1, y:0}} transitions={{duration:0.7}} className="w-full max-w-md bg-white/70 backdrop-blur-xl border border-[#C9A86A]/30 rounded-3xl shadow-2xl p-10 fff">
+         <div className="flex flex-col items-center mb-8">
+
+
+
+          
+         </div>
+          </motion.div>
 
 
 
