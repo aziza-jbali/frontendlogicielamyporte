@@ -1,7 +1,7 @@
 import { useState,useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import React from 'react'
-
+import {motion,AnimatePresence} from "framer-motion";
+import {User,Lock } from "lucide-react";
 export default function Login() {
     const navigate=useNavigate()
     const [error,setError]=useState("")
@@ -18,14 +18,42 @@ export default function Login() {
     }
   return (                                                                                                                                              
 
-    <div className="min-h-screen bg-linear-to-b from-[#faf6ef] to-[#f0e5d2] items-center justify-center p-6">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-      <motion.div initial={{opacity:0, y:30}} animate={{opacity:1, y:0}} transitions={{duration:0.7}}>
+    <div className="min-h-screen flex bg-linear-to-b from-[#faf6ef] to-[#f0e5d2] items-center justify-center p-6 fff">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+      <motion.div initial={{opacity:0, y:30}} animate={{opacity:1, y:0}} transitions={{duration:0.7}} className="w-full max-w-md bg-white/70 backdrop-blur-xl border border-[#C9A86A]/30 rounded-3xl shadow-2xl p-10 fff">
+         <div className="flex flex-col items-center mb-8">
+            <div className="p-4 rounded-2xl bg-[#C9A86A]/20 border border-[#C9A86A]/30 mb-3">
+            <Lock size={36} className="text-[#292723]"/>
+                </div>
+                <h1 className="text-3xl font-bold text-neutral-900">Login to your Account</h1>
+                <p className="text-neutral-600 mt-2 text-center">Enter your email and password to access to Dashboard</p>
+         </div>
+         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            <motion.div initial={{opacity:0, y:30}} animate={{opacity:1, y:0}} transitions={{delay:0.1}}>
+                <label className="text-neutral-800 font font-medium pl-1">Email</label>
+                <div className="flex items-center border border-neutral-300 rounded-xl p-2 bg-white shadow-sm focus-within::border-[#C9A86A] transition">
+                    <User size={20} className="text-[#C9A86A] mr-2"/>
+                                    <input type="email" value={email} onChange={(e)=>setEmail(e.target.value)} required className="w-full outline-none p-2 bg-transparent" placeholder="you@exemple.com" />
 
+                </div>
+            </motion.div>
+            <motion.div initial={{opacity:0, y:30}} animate={{opacity:1, y:0}} transitions={{delay:0.1}}>
+                <label className="text-neutral-800 font  pl-1 font-medium">Password</label>
+                <div className="flex items-center border border-neutral-300 rounded-xl p-2 bg-white shadow-sm focus-within::border-[#C9A86A] transition">
+                    <User size={20} className="text-[#C9A86A] mr-2"/>
+                                    <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} required className="w-full outline-none p-2 bg-transparent" placeholder="............." />
+
+                </div>
+            </motion.div>
+            {error && (<motion.p initial={{opacity:0}} animate={{opacity:1}} className="text-red-500 text-sm">{error}</motion.p> )}
+            <motion.button whileHover={{scale:1.03}} whileTap={{scale:0.97}} type="submit" className="mt-4 py-3 bg-orange-950 text-white font-semibold rounded-xl shadow-lg hover:bg-[#b8965f] transition text-lg">login</motion.button>
+         <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} className="mt-8 text-center text-neutral-600 text-sm">
+             ©️2026 Amy Porte
+         </motion.div>
+         </form>
       </motion.div>
 
 
     </div>                                                                                                                                                                                          
-  )                                                                                                                                                                 
+  )                                                                                                             
 }
-
 

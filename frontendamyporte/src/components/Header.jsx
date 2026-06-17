@@ -9,7 +9,7 @@ import "../index.css"
  function Header() {
      const location=useLocation();
      const [isMobileMenuOpen,setisMobileMenuOpen]=useState(false);                                                                                                                                          
-     const user=1;
+     const user=0;
      const navLinks=[
          {name:"Home",path:"/"},
          {name:"Invoices",path:"/invoices"},
