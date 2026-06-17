@@ -35,7 +35,7 @@ import "../index.css"
             </Link>
 
           </motion.div>))}
-          { user ? (<div className="        flex items-center gap-4">
+          { user ? (<div className=" flex items-center gap-4">
             {/* Notifications Icon */}
             <Link to="/notifications">
             <motion.div whileHover={{scale:1.2,rotate:10}} className="relative cursor-pointer">
