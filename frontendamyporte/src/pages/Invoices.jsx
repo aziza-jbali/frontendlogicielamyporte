@@ -69,17 +69,38 @@ export default function invoices() {
        
         
 
-<div className="flex flex-col md:flex-row fff min-h-screen  items-center justify-center p-6">
-  <div className='flex  flex-col md:flex-row 'style={{ border: "7px solid green" }}>
-    <div className='w-full md:w-1/2 fff p-4' >
-    <Cards/>
+<div className="flex flex-col md:flex-row  min-h-screen  items-center justify-center p-32">
+  <div className='flex  flex-col md:flex-row flex-wrap p-10'>
+    <div className='w-full md:w-1/2  p-4 ' >
+    <Cards icon="fas fa-check-circle"
+        title="Annonces fiables"
+        description="Toutes nos annonces sont vérifiées afin d'assurer sécurité et fiabilité pour les utilisateurs."/>
     
   </div>
-<div className='w-full md:w-1/2 fff p-4' >
-    <Cards/>
+<div className='w-full md:w-1/2  p-4' >
+    <Cards icon="fa-solid fa-truck"
+        title="Bon de livraison"
+        description="Toutes nos annonces sont vérifiées afin d'assurer sécurité et fiabilité pour les utilisateurs." bgco= />
+
+  </div>
+  <div className='w-full md:w-1/2  p-4' >
+    <Cards icon="fas fa-check-circle"
+        title="Annonces fiables"
+        description="Toutes nos annonces sont vérifiées afin d'assurer sécurité et fiabilité pour les utilisateurs."/>
     
   </div>
+     <div className='w-full md:w-1/2  p-4' >
+    <Cards icon="fas fa-check-circle"
+        title="Annonces fiables"
+        description="Toutes nos annonces sont vérifiées afin d'assurer sécurité et fiabilité pour les utilisateurs."/>
     
+  </div>
+   <div className='w-full md:w-1/2  p-4' >
+    <Cards icon="fas fa-check-circle"
+        title="Annonces fiables"
+        description="Toutes nos annonces sont vérifiées afin d'assurer sécurité et fiabilité pour les utilisateurs."/>
+    
+  </div>
   </div>
 </div>
 
