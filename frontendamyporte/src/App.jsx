@@ -5,6 +5,8 @@ import { useState } from 'react'
 import {BrowserRouter, Routes,Route} from "react-router-dom";
 import Login from './pages/Login.jsx';
 import Header from './components/Header.jsx'
+import Clientstep from "./components/Clientstep.jsx"
+
 import Invoices from './pages/Invoices.jsx';
 import MainDashboard from './pages/MainDashboard.jsx';
 function App() {
@@ -12,13 +14,14 @@ function App() {
 
   return (
     <>
-    {/* <Header/> 
+   {/* <Header/> 
     <Routes>
       <Route path="/login" element={<Login/>}/>
             <Route path="/invoices" element={<Invoices/>}/>
 
     </Routes>  */}
-    <MainDashboard/>
+    {/* <MainDashboard/> */}
+    <Clientstep/>
     
 
     </>

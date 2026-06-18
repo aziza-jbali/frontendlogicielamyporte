@@ -3,7 +3,7 @@
 // import {Bell,Rocket,User,DoorOpen, Library, LogOut} from "lucide-react";
 // import hero from "../assets/hero.png"
 // export default function Sidebar() {
-//   return (
+//  return (
 //     <div className='transition pb-5 pl-8 fff duration-300 ease-in-out bg-white/80 dark:bg-state-900/80 backdrop-blur-xl border-r border-slate-200/50 dark:border-slate-700/50 flex flex-col relative z-10 fff'>
 //       {/* logo */}
 //       <div className=' fff py-6'>
