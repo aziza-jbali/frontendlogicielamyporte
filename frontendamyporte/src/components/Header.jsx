@@ -9,7 +9,7 @@ import "../index.css"
  function Header() {
      const location=useLocation();
      const [isMobileMenuOpen,setisMobileMenuOpen]=useState(false);                                                                                                                                          
-     const user=0;
+     const user=1;
      const navLinks=[
          {name:"Home",path:"/"},
          {name:"Invoices",path:"/invoices"},
@@ -29,7 +29,7 @@ import "../index.css"
          {/* Desktop menu */}
          <div className=' hidden md:flex items-center gap-6'>
           {navLinks.map((link)=>(<motion.div key={link.path} whileHover={{scale:1.1}}>
-            <Link to={link.path} className={`relative text-xl font-medium transition-all duration-300 ${location.pathname === link.path ? "text-yellow-950":"text-neutral-700 hover:text-yellow-950"}`}>
+            <Link to={link.path} className={`relative text-base font-medium transition-all duration-300 ${location.pathname === link.path ? "text-yellow-950":"text-neutral-700 hover:text-yellow-950"}`}>
             {link.name}
             {location.pathname === link.path && (<motion.span layoutId='underline' className='absolute-bottom-1 left-0 w-full h-0.5 bg-yellow-900 rounded-full'/>)}
             </Link>

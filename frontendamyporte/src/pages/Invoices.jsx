@@ -80,7 +80,7 @@ export default function invoices() {
 <div className='w-full md:w-1/2  p-4' >
     <Cards icon="fa-solid fa-truck"
         title="Bon de livraison"
-        description="Toutes nos annonces sont vérifiées afin d'assurer sécurité et fiabilité pour les utilisateurs." bgco="bg-red-500" />
+         bgco="bg-red-500" />
 
   </div>
   <div className='w-full md:w-1/2  p-4' >
