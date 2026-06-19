@@ -4,6 +4,7 @@ import {getallclients} from "../services/apiGestionclient.js"
 import { div } from 'framer-motion/client';
 import { filter } from 'framer-motion/m';
 import { UserPlusIcon } from "@animateicons/react/lucide";
+import Pagination from './Pagination.jsx';
 
 export default function Clientstep() {
     const [query,setquery]=useState(" ")
@@ -24,8 +25,9 @@ export default function Clientstep() {
       fetchclient()
     },[query])
   return (
-    <div className='flex flex-col  min-h-screen  items-center justify-center    bg-linear-to-b from-[#faf6ef] to-[#f0e5d2] '>
-      <div className='flex flex-col relative gap-10 w-52 h-96 md:w-96 md:h-[300px] lg:w-[600px] lg:h-[300px] '>
+    <div className='flex flex-col  min-h-screen  items-center justify-center    bg-linear-to-b from-[#faf6ef] to-[#f0e5d2] fff'>
+      <div className='flex flex-col relative gap-10 w-52 h-96 md:w-96 md:h-[300px] lg:w-[600px] lg:h-[300px] fff'>
+        <div><Pagination/></div>
 
     <div className='  relative  flex flex-col gap-1 '> 
     <div className='absolute   top-2.5 text-2xl left-0.5'><i class="fa-solid fa-magnifying-glass    "></i></div>
