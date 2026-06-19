@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import {getallclients} from "../services/apiGestionclient.js"
 import { div } from 'framer-motion/client';
 import { filter } from 'framer-motion/m';
+import { UserPlusIcon } from "@animateicons/react/lucide";
+
 export default function Clientstep() {
     const [query,setquery]=useState(" ")
     const [clients,setclients]=useState([])
@@ -23,7 +25,7 @@ export default function Clientstep() {
     },[query])
   return (
     <div className='flex flex-col  min-h-screen  items-center justify-center    bg-linear-to-b from-[#faf6ef] to-[#f0e5d2] '>
-      <div className='flex flex-col relative gap-10 w-72 h-96 md:w-96 md:h-[500px] lg:w-[600px] lg:h-[700px] fff'>
+      <div className='flex flex-col relative gap-10 w-52 h-96 md:w-96 md:h-[300px] lg:w-[600px] lg:h-[300px] '>
 
     <div className='  relative  flex flex-col gap-1 '> 
     <div className='absolute   top-2.5 text-2xl left-0.5'><i class="fa-solid fa-magnifying-glass    "></i></div>
@@ -31,7 +33,7 @@ export default function Clientstep() {
      {console.log(query)}
       {/* Search seggestion  */}
 
- <div className='rounded-xl overflow-hidden '>
+ <div className='rounded-xl overflow-hidden  absolute top-13 z-10'>
    {clients ?(clients.map((client)=>(
     <div className=' bg-amber-50 p-2  '>     <div  className='ml-1 '><i class="fa-solid fa-magnifying-glass pr-4.5 "></i><span key={client._id}>{client.nom}</span></div>
 
@@ -41,7 +43,14 @@ export default function Clientstep() {
    ))):""}
  </div>
      </div>
-<div className='flex-1'></div>
+<div className='flex-1 flex justify-center '>
+  
+<UserPlusIcon
+  size={64}
+  duration={1}
+  color="black"
+/>
+</div>
  <div className='fff'><p >Ajouter un client </p></div>
   
 </div>
@@ -50,4 +59,5 @@ export default function Clientstep() {
     </div>
   )
 }
+
 
