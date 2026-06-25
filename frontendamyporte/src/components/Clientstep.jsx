@@ -1,65 +1,79 @@
-import { Search } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import {getallclients} from "../services/apiGestionclient.js"
-import { div } from 'framer-motion/client';
-import { filter } from 'framer-motion/m';
+import { Search } from "lucide-react";
+import { useEffect, useState } from "react";
+import { getallclients } from "../services/apiGestionclient.js";
+import { div } from "framer-motion/client";
+import { filter } from "framer-motion/m";
 import { UserPlusIcon } from "@animateicons/react/lucide";
-import Pagination from './Pagination.jsx';
+import Pagination from "./Pagination.jsx";
 
 export default function Clientstep() {
-    const [query,setquery]=useState(" ")
-    const [clients,setclients]=useState([])
-    useEffect(()=>{
-      const fetchclient= async()=>{
-        try {
-          const response=await getallclients()
-          console.log(response)
-          const newarray=response.data.filter((client)=>  Object.values(client).includes(query))
-          console.log(newarray)
-          setclients(newarray);
-          console.log("i am working")
-        } catch (error) {
-          console.error("❌ Erreur lors de la récupération du client :", error);
-        }
+  const [query, setquery] = useState(" ");
+  const [clients, setclients] = useState([]);
+  useEffect(() => {
+    const fetchclient = async () => {
+      try {
+        const response = await getallclients();
+        console.log(response);
+        const newarray = response.data.filter((client) =>
+          Object.values(client).includes(query),
+        );
+        console.log(newarray);
+        setclients(newarray);
+        console.log("i am working");
+      } catch (error) {
+        console.error("❌ Erreur lors de la récupération du client :", error);
       }
-      fetchclient()
-    },[query])
+    };
+    fetchclient();
+  }, [query]);
   return (
-    <div className='flex flex-col  min-h-screen  items-center justify-center    bg-linear-to-b from-[#faf6ef] to-[#f0e5d2] fff'>
-      <div className='flex flex-col relative gap-10 w-52 h-96 md:w-96 md:h-[300px] lg:w-[600px] lg:h-[300px] fff'>
-        <div><Pagination/></div>
+    <div className="flex flex-col  min-h-screen  items-center justify-center    bg-linear-to-b from-[#faf6ef] to-[#f0e5d2]     ">
+      <div className="flex flex-col relative gap-10 w-52 h-96 md:w-96 md:h-[300px] lg:w-[600px] lg:h-[300px]     ">
+        {/* <div>
+          <Pagination /> 
+        </div> */}
 
-    <div className='  relative  flex flex-col gap-1 '> 
-    <div className='absolute   top-2.5 text-2xl left-0.5'><i class="fa-solid fa-magnifying-glass    "></i></div>
-     <input  onChange={(e)=>setquery(e.target.value)}  type="search"  className='bg-pink-100 text-black   p-3 rounded-2xl  pl-8'/>
-     {console.log(query)}
-      {/* Search seggestion  */}
+        <div className="  relative  flex flex-col gap-1 ">
+          <div className="absolute   top-2.5 text-2xl left-0.5">
+            <i class="fa-solid fa-magnifying-glass    "></i>
+          </div>
+          <input
+            onChange={(e) => setquery(e.target.value)}
+            type="search"
+            className=" bg-orange-100 text-black   p-3 rounded-2xl  pl-8"
+          />
+          {console.log(query)}
+          {/* Search seggestion  */}
 
- <div className='rounded-xl overflow-hidden  absolute top-13 z-10'>
-   {clients ?(clients.map((client)=>(
-    <div className=' bg-amber-50 p-2  '>     <div  className='ml-1 '><i class="fa-solid fa-magnifying-glass pr-4.5 "></i><span key={client._id}>{client.nom}</span></div>
+          <div className="rounded-xl overflow-hidden  absolute top-13 z-10">
+            {clients
+              ? clients.map((client) => (
+                  <div className=" bg-amber-50 p-2  ">
+                    {" "}
+                    <div className="ml-1 ">
+                      <i class="fa-solid fa-magnifying-glass pr-4.5 "></i>
+                      <span key={client._id}>{client.nom}</span>
+                    </div>
+                  </div>
+                ))
+              : ""}
+          </div>
+        </div>
+        {/* <div className=" flex  items-center justify-center fff">
+           <UserPlusIcon size={64} duration={1} color="black" /> 
+          <i class="fa-solid fa-people-group text-8xl text-orange-900"></i>
 
-   </div>
-    
-      
-   ))):""}
- </div>
-     </div>
-<div className='flex-1 flex justify-center '>
-  
-<UserPlusIcon
-  size={64}
-  duration={1}
-  color="black"
-/>
-</div>
- <div className='fff'><p >Ajouter un client </p></div>
-  
-</div>
- 
-       
+        </div> */}
+        <div className="flex items-center justify-center">
+          <div className="w-32 h-32 rounded-full bg-orange-100 flex items-center justify-center">
+            <i className="fa-solid fa-people-group text-5xl text-orange-900"></i>
+          </div>
+        </div>
+        <div className=" flex items-center justify-center ">
+           <div className="transition-all duration-300 ease-in-out hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl">  <p> + Ajouter un client </p></div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
-
-
+            // <Link to="/register" className="ml-2 bg-linear-to-r   from-yellow-700 to-orange-900 px-4 py-1.5 rounded-full font-medium  text-white hover:shadow-lg hover:shadow-yellow-700/40 transition-all">

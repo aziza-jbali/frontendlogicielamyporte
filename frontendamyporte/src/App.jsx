@@ -6,7 +6,7 @@ import {BrowserRouter, Routes,Route} from "react-router-dom";
 import Login from './pages/Login.jsx';
 import Header from './components/Header.jsx'
 import Clientstep from "./components/Clientstep.jsx"
-
+import Invoicestep from './components/Invoicestep.jsx';
 import Invoices from './pages/Invoices.jsx';
 import MainDashboard from './pages/MainDashboard.jsx';
 function App() {
@@ -21,8 +21,8 @@ function App() {
 
     </Routes>  */}
     {/* <MainDashboard/> */}
-    <Clientstep/>
-    
+    {/* <Clientstep/> */}
+    <Invoicestep/>
 
     </>
   )

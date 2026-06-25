@@ -50,7 +50,7 @@ import "../index.css"
             </motion.div>
            </Link>
            {/* logout button */}
-           <button onClick={LogOut} className="ml-2 bg-linear-to-r from-yellow-900 to-orange-950 px-4 py-1.5 rounded-full font-medium text-white hover:shadow-lg hover:shadow-yellow-700/40 transition-all">
+           <button onClick={LogOut} className="ml-2 bg-linear-to-r from-yellow-900 to-orange-950 px-4 py-1.5 rounded-full font-medium text-white :shadow-lg hover:shadow-yellow-700/40 transition-all">
            Logout</button>
           </div>
           ):(<div className="flex items-center gap-4">
@@ -60,7 +60,7 @@ import "../index.css"
              إنشاء حساب</Link>
 
           </div>)}
-         </div>
+         </div>hover
          {/* Mobile Menu */}
          <div className="md:hidden flex items-center gap-3">
           <button onClick={()=> setisMobileMenuOpen((prev)=> !prev)} className="text-neutral-900 text-2xl focus:outlineine-none">
