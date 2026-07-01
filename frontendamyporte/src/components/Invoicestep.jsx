@@ -11,7 +11,7 @@ export default function Invoicestep() {
   
   return (
     <div className="flex   justify-center items-center bg-linear-to-b from-[#faf6ef] to-[#f0e5d2]   min-h-screen ">
-      <div className="w-80 relative bg-white   md:w-[300px] lg:w-[900px] fff    ">
+      <div className="w-80 relative bg-white   md:w-[300px] lg:w-[900px]       ">
         <div className="relative overflow-hidden h-70  bg-[#3B2414]    ">
           <div className="absolute w-72 h-72 rounded-full bg-[#6b4224] opacity-90 -top-25 -right-19 "></div>
           <div className=" text-[#ffc186] bg-[#996e47] absolute right-12 rounded-2xl text-sm h-8 top-19 w-26 p-1 text-center border-1 font-bold border-[#ffcea0]">
@@ -30,7 +30,7 @@ export default function Invoicestep() {
         {/* <div className="absolute  top-56  md:w-[300px] lg:w-[800px]  w-80       px-3 ">
           <div className="    m-auto  lg:w-[150px]  md:w-[90px] rounded-4xl bg-white p-7 shadow-2xl ">helo</div>
         </div> */}
-        <div className="absolute top-56 w-80 md:w-[300px] lg:w-[900px] px-3 flex justify-center fff">
+        <div className="absolute top-56 w-80 md:w-[300px] lg:w-[900px] px-3 flex justify-center   ">
           <div className=" rounded-3xl bg-white p-4 lg:w-[780px] md:w-[270px] flex justify-between shadow-2xl text-[#b39376] ">
             <div className=" w-1/2 px-2">
               <p>FACTURE A : </p>
@@ -42,16 +42,16 @@ export default function Invoicestep() {
             </div>
           </div>
         </div>
-        <div className="mt-15 flex justify-center fff ">
+        <div className="mt-15 flex justify-center    ">
           <div className="w-full max-w-4xl border border-green-500 p-4 rounded-xl">
             {/* Header */}
             <div className="grid grid-cols-6 font-bold text-center  pb-3">
-              <h1 className="fff">Produit</h1>
-              <h1 className="fff">Hauteur</h1>
-              <h1 className="fff">Largeur</h1>
-              <h1 className="fff">P.Unitaire</h1>
-              <h1 className="fff">Montant</h1>
-              <div className="fff">
+              <h1 className="  ">Produit</h1>
+              <h1 className="  ">Hauteur</h1>
+              <h1 className="  ">Largeur</h1>
+              <h1 className="  ">P.Unitaire</h1>
+              <h1 className="  ">Montant</h1>
+              <div className="  ">
                 <button
                   onClick={() => {
                     addRow();
@@ -66,8 +66,8 @@ export default function Invoicestep() {
             {/* Row */}
             {rows.map((item)=>(
               <div className="grid grid-cols-6 gap-4 items-center mt-4 " key={item}>
-              <select className="border rounded-full px-3 py-2 text-sm fff" onClick={() => setOpen(!open)}>
-                <option value="" >Choisir</option>
+              <select className="border rounded-full px-3 py-2 text-sm   " onClick={() => setOpen(!open)}>
+                
                 <option>Fenetre aluminium</option>
                 <option>Porte aluminium</option>
                 <option>Monobloc</option>
@@ -81,20 +81,20 @@ export default function Invoicestep() {
 
               <input
                 type="number"
-                className="border rounded-full px-3 py-2 fff"
+                className="border rounded-full px-3 py-2   "
                 placeholder="cm"
               />
 
               <input
                 type="number"
-                className="border rounded-full px-3 py-2 fff"
+                className="border rounded-full px-3 py-2   "
                 placeholder="cm"
               />
 
-              <div className="text-center fff text-gray-500">..........</div>
+              <div className="text-center    text-gray-500">..........</div>
 
-              <div className="text-center fff text-gray-500">........</div>
-              <div className="fff flex justify-between ">
+              <div className="text-center    text-gray-500">........</div>
+              <div className="   flex justify-between ">
                 {" "}
                 <button onClick={() => {}}>
                   <i class="fa-solid fa-trash"></i>
