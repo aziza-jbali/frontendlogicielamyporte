@@ -1,8 +1,9 @@
 import { Bell, Rocket, User, DoorOpen, Library, LogOut } from "lucide-react";
 import { useState } from "react";
-
+import Popup1 from "./Popup1";
 export default function Invoicestep() {
   const [rows, setRows] = useState([1]);
+   const [open, setOpen] = useState(false)
 
   function addRow() {
     setRows([...rows, rows.length + 1]);
@@ -65,8 +66,8 @@ export default function Invoicestep() {
             {/* Row */}
             {rows.map((item)=>(
               <div className="grid grid-cols-6 gap-4 items-center mt-4 " key={item}>
-              <select className="border rounded-full px-3 py-2 text-sm fff">
-                <option value="">Choisir</option>
+              <select className="border rounded-full px-3 py-2 text-sm fff" onClick={() => setOpen(!open)}>
+                <option value="" >Choisir</option>
                 <option>Fenetre aluminium</option>
                 <option>Porte aluminium</option>
                 <option>Monobloc</option>
@@ -75,6 +76,8 @@ export default function Invoicestep() {
                 <option>Moustiquaire</option>
                 <option>Caisson</option>
               </select>
+
+                
 
               <input
                 type="number"
@@ -103,9 +106,11 @@ export default function Invoicestep() {
               </div>
             </div>
             ))}
+            <Popup1 open={open} setOpen={setOpen}/>
           </div>
         </div>
       </div>
+
     </div>
   );
 }
