@@ -3,12 +3,14 @@ import { useState } from "react";
 import Popup1 from "./Popup1";
 export default function Invoicestep() {
   const [rows, setRows] = useState([1]);
-   const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState("");
+  console.log("here",selected)
 
   function addRow() {
     setRows([...rows, rows.length + 1]);
   }
-  
+
   return (
     <div className="flex   justify-center items-center bg-linear-to-b from-[#faf6ef] to-[#f0e5d2]   min-h-screen ">
       <div className="w-80 relative bg-white   md:w-[300px] lg:w-[900px]       ">
@@ -64,53 +66,71 @@ export default function Invoicestep() {
             </div>
 
             {/* Row */}
-            {rows.map((item)=>(
-              <div className="grid grid-cols-6 gap-4 items-center mt-4 " key={item}>
-              <select className="border rounded-full px-3 py-2 text-sm   " onClick={() => setOpen(!open)}>
-                
-                <option>Fenetre aluminium</option>
-                <option>Porte aluminium</option>
-                <option>Monobloc</option>
-                <option>Fer forgé</option>
-                <option>Rouleaux rideaux</option>
-                <option>Moustiquaire</option>
-                <option>Caisson</option>
-              </select>
+            {rows.map((item) => (
+              <div
+                className="grid grid-cols-6 gap-4 items-center mt-4 "
+                key={item}
+              >
+                <select
+                  className="border rounded-full px-3 py-2 text-sm   "
+                  // value={selected}
+                  // onChange={(e) => {
+                  //   const value = e.target.value;
+                  //   setSelected(value);
 
-                
+                  //   if (
+                  //     value === "Monobloc" ||
+                  //     value === "Fenetrealuminium" ||
+                  //     value === "Rouleauxrideaux"
+                  //   ) {
+                  //     setOpen(true);
+                  //   } else {
+                  //     setOpen(false);
+                  //   }
+                  // }}
+                >
+                  <option value="Portealuminium">Porte aluminium</option>
+                  <option value="Monobloc">Monobloc</option>
+                  <option value="Fenetrealuminium">Fenetre aluminium</option>
 
-              <input
-                type="number"
-                className="border rounded-full px-3 py-2   "
-                placeholder="cm"
-              />
+                  <option value="ferforgie">Fer forgé</option>
+                  <option value="Rouleauxrideaux">Rouleaux rideaux</option>
+                  <option value="Moustiquaire">Moustiquaire</option>
+                  <option value="Caisson">Caisson</option>
+                </select>
 
-              <input
-                type="number"
-                className="border rounded-full px-3 py-2   "
-                placeholder="cm"
-              />
+                <input
+                  type="number"
+                  className="border rounded-full px-3 py-2   "
+                  placeholder="cm"
+                />
 
-              <div className="text-center    text-gray-500">..........</div>
+                <input
+                  type="number"
+                  className="border rounded-full px-3 py-2   "
+                  placeholder="cm"
+                />
 
-              <div className="text-center    text-gray-500">........</div>
-              <div className="   flex justify-between ">
-                {" "}
-                <button onClick={() => {}}>
-                  <i class="fa-solid fa-trash"></i>
-                </button>
-                <button>
+                <div className="text-center    text-gray-500">..........</div>
+
+                <div className="text-center    text-gray-500">........</div>
+                <div className="   flex justify-evenly ">
                   {" "}
-                  <i class="fa-solid fa-pen"></i>
-                </button>
+                  <button >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                  <button>
+                    {" "}
+                    <i class="fa-solid fa-pen"></i>
+                  </button>
+                  <button onClick={() => {setOpen(!open)}}><i class="fa-solid fa-gear"></i></button>
+                </div>
               </div>
-            </div>
             ))}
-            <Popup1 open={open} setOpen={setOpen}/>
+            <Popup1 open={open} setOpen={setOpen}  selected={selected} setSelected={setSelected}/>
           </div>
         </div>
       </div>
-
     </div>
   );
 }

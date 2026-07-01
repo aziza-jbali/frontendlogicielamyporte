@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Popup({open,setOpen}) {
+export default function Popup({open,setOpen,setSelected,selected}) {
 
     
      console.log(open)
@@ -16,7 +16,7 @@ export default function Popup({open,setOpen}) {
             <h1>Hello 👋</h1>
 
             <button
-              onClick={() => setOpen(false)}
+              onClick={() => {setOpen(false)}}
               className="mt-4 bg-red-500 text-white px-3 py-2"
             >
               Close
