@@ -53,7 +53,7 @@ export default function Pagination({ nb = 1 }) {
   ];
 
   return (
-    <div className="w-full max-w-xl mx-auto py-5 px-4 fff">
+    <div className="w-full max-w-xl mx-auto py-5 px-4     ">
       <nav aria-label="Progress">
         <ul className="flex items-center w-full">
           {steps.map((step, index) => {
@@ -83,7 +83,7 @@ export default function Pagination({ nb = 1 }) {
                     <step.icon 
                       size={24} 
                       duration={1} 
-                      color={isActive ? "#ffffff" : isCompleted ? "#5c3d2e" : "#a8a29e"} 
+                      color={isActive ? "#        " : isCompleted ? "#5c3d2e" : "#a8a29e"} 
                     />
                   </div>
                   
@@ -98,7 +98,7 @@ export default function Pagination({ nb = 1 }) {
 
                 {/* Connecting Line (Hidden after the last step) */}
                 {/* {index !== steps.length - 1 && (
-                  <div className="absolute top-7 left-[50%] right-[-50%] h-[2px] -translate-y-1/2 z-0 px-6 fff">
+                  <div className="absolute top-7 left-[50%] right-[-50%] h-[2px] -translate-y-1/2 z-0 px-6     ">
                     <div 
                       className={`h-full w-full transition-all duration-500 rounded
                         ${stepNumber < nb ? "bg-[#5c3d2e]" : "bg-stone-200"}`}
