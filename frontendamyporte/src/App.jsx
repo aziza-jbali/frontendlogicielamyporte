@@ -10,6 +10,7 @@ import Invoicestep from './components/Invoicestep.jsx';
 import Invoices from './pages/Invoices.jsx';
 import MainDashboard from './pages/MainDashboard.jsx';
 import Popup from './components/Popup1.jsx';
+import WizardLayout from './Layout/WizardLayout.jsx';
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -23,8 +24,9 @@ function App() {
     </Routes>  */}
     {/* <MainDashboard/> */}
     {/* <Clientstep/> */}
-     <Invoicestep/> 
+     {/* <Invoicestep/>  */}
     {/* <Popup/> */}
+    <WizardLayout/>
 
     </>
   )

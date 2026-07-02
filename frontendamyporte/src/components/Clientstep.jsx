@@ -27,7 +27,8 @@ export default function Clientstep() {
     fetchclient();
   }, [query]);
   return (
-    <div className="flex flex-col  min-h-screen  items-center justify-center    bg-linear-to-b from-[#faf6ef] to-[#f0e5d2]     ">
+  
+       
       <div className="flex flex-col relative gap-10 w-52 h-96 md:w-96 md:h-[300px] lg:w-[600px] lg:h-[300px]     ">
         {/* <div>
           <Pagination /> 
@@ -73,7 +74,7 @@ export default function Clientstep() {
            <div className="transition-all duration-300 ease-in-out hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl">  <p> + Ajouter un client </p></div>
         </div>
       </div>
-    </div>
+   
   );
 }
             // <Link to="/register" className="ml-2 bg-linear-to-r   from-yellow-700 to-orange-900 px-4 py-1.5 rounded-full font-medium  text-white hover:shadow-lg hover:shadow-yellow-700/40 transition-all">

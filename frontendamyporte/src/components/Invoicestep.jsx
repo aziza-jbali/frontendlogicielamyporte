@@ -1,5 +1,6 @@
 import { Bell, Rocket, User, DoorOpen, Library, LogOut } from "lucide-react";
 import { useState } from "react";
+import Pagination from "./Pagination";
 import Popup1 from "./Popup1";
 export default function Invoicestep() {
   const [rows, setRows] = useState([1]);
@@ -12,8 +13,8 @@ export default function Invoicestep() {
   }
 
   return (
-    <div className="flex   justify-center items-center bg-linear-to-b from-[#faf6ef] to-[#f0e5d2]   min-h-screen ">
-      <div className="w-80 relative bg-white   md:w-[300px] lg:w-[900px]       ">
+      
+      <div className="w-80 relative bg-white   md:w-[300px] lg:w-[900px] fff      ">
         <div className="relative overflow-hidden h-70  bg-[#3B2414]    ">
           <div className="absolute w-72 h-72 rounded-full bg-[#6b4224] opacity-90 -top-25 -right-19 "></div>
           <div className=" text-[#ffc186] bg-[#996e47] absolute right-12 rounded-2xl text-sm h-8 top-19 w-26 p-1 text-center border-1 font-bold border-[#ffcea0]">
@@ -45,7 +46,7 @@ export default function Invoicestep() {
           </div>
         </div>
         <div className="mt-15 flex justify-center    ">
-          <div className="w-full max-w-4xl border border-green-500 p-4 rounded-xl">
+          <div className="w-full max-w-4xl  p-4 rounded-xl">
             {/* Header */}
             <div className="grid grid-cols-6 font-bold text-center  pb-3">
               <h1 className="  ">Produit</h1>
@@ -131,7 +132,7 @@ export default function Invoicestep() {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 }
 // bg-[#854F0B]

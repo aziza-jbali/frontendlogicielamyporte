@@ -1,32 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import FenetreForm from "./Productsform/FenetreForm";
+import { XIcon } from "@animateicons/react/lucide";
 
-export default function Popup({open,setOpen,setSelected,selected}) {
-
-    
-     console.log(open)
+export default function Popup({ open, setOpen, setSelected, selected }) {
+  console.log(open);
 
   return (
-    
     <div>
-      
-
       {open && (
-        <div className="fixed inset-0 bg-black/50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg">
-            <h1>Hello 👋</h1>
-
-            <button
-              onClick={() => {setOpen(false)}}
-              className="mt-4 bg-red-500 text-white px-3 py-2"
+        <div className="fixed inset-0 bg-black/50 flex justify-center items-center ">
+          <div className="bg-[#614c38] p-6 rounded-lg     flex justify-center">
+            <FenetreForm />
+            <div
+              onClick={() => {
+                setOpen(false);
+              }}
+              className=" text-black px-3 py-2 self-start    "
             >
-              Close
-            </button>
+              <XIcon size={20} duration={1} color="black" />
+            </div>
           </div>
         </div>
       )}
     </div>
   );
-   
-  
 }
-
