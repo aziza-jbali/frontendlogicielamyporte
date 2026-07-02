@@ -9,6 +9,8 @@ import Pagination from "./Pagination.jsx";
 export default function Clientstep() {
   const [query, setquery] = useState(" ");
   const [clients, setclients] = useState([]);
+  const [wantedclient,setwantedclient]=useState({})
+  console.log("hellovvv",wantedclient)
   useEffect(() => {
     const fetchclient = async () => {
       try {
@@ -48,12 +50,12 @@ export default function Clientstep() {
 
           <div className="rounded-xl overflow-hidden  absolute top-13 z-10">
             {clients
-              ? clients.map((client) => (
-                  <div className=" bg-amber-50 p-2  ">
+              ? clients.map((client,index) => (
+                  <div className=" bg-amber-50 p-2 fff " key={client._id}  onClick={()=>{setwantedclient(client)}}>
                     {" "}
                     <div className="ml-1 ">
                       <i class="fa-solid fa-magnifying-glass pr-4.5 "></i>
-                      <span key={client._id}>{client.nom}</span>
+                      <span >{client.nom}</span>
                     </div>
                   </div>
                 ))
