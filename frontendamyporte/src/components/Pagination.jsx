@@ -53,7 +53,7 @@ export default function Pagination({ nb = 1 }) {
   ];
 
   return (
-    <div className="w-full max-w-xl mx-auto py-5 px-4     ">
+    <div className="w-full max-w-xl mx-auto py-5 px-4    z-0 ">
       <nav aria-label="Progress">
         <ul className="flex items-center w-full">
           {steps.map((step, index) => {

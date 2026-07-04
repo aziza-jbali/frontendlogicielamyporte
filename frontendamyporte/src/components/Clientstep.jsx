@@ -5,11 +5,12 @@ import { div } from "framer-motion/client";
 import { filter } from "framer-motion/m";
 import { UserPlusIcon } from "@animateicons/react/lucide";
 import Pagination from "./Pagination.jsx";
-
+import Popup1 from "./Popup1.jsx";
 export default function Clientstep() {
   const [query, setquery] = useState(" ");
   const [clients, setclients] = useState([]);
   const [wantedclient,setwantedclient]=useState({})
+   const [open,setOpen]=useState(false)
   console.log("hellovvv",wantedclient)
   useEffect(() => {
     const fetchclient = async () => {
@@ -31,7 +32,7 @@ export default function Clientstep() {
   return (
   
        
-      <div className="flex flex-col relative gap-10 w-52 h-96 md:w-96 md:h-[300px] lg:w-[600px] lg:h-[300px]     ">
+      <div className="flex flex-col relative gap-10 w-52 h-96 md:w-96 md:h-[300px] lg:w-[600px] lg:h-[300px]    mt-2 ">
         {/* <div>
           <Pagination /> 
         </div> */}
@@ -48,10 +49,10 @@ export default function Clientstep() {
           {console.log(query)}
           {/* Search seggestion  */}
 
-          <div className="rounded-xl overflow-hidden  absolute top-13 z-10">
+          <div className="rounded-xl overflow-hidden  absolute top-13 z-10 cursor-pointer">
             {clients
               ? clients.map((client,index) => (
-                  <div className=" bg-amber-50 p-2 fff " key={client._id}  onClick={()=>{setwantedclient(client)}}>
+                  <div className=" bg-amber-50 p-2 fff  " key={client._id}  onClick={()=>{setwantedclient(client)}}>
                     {" "}
                     <div className="ml-1 ">
                       <i class="fa-solid fa-magnifying-glass pr-4.5 "></i>
@@ -73,8 +74,9 @@ export default function Clientstep() {
           </div>
         </div>
         <div className=" flex items-center justify-center ">
-           <div className="transition-all duration-300 ease-in-out hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl">  <p> + Ajouter un client </p></div>
+           <div className="transition-all duration-300 ease-in-out hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl" onClick={()=>(setOpen(!open))}>  <p> + Ajouter un client </p></div>
         </div>
+        <Popup1 open={open} setOpen={setOpen}></Popup1>
       </div>
    
   );
