@@ -5,8 +5,7 @@ export async function getallclients(){
 }
 export async function addclient(clientData){
       const response = await axios.post(`${apiUrl}/createclient`, clientData);
-      return response.data;
-
+      return response;
 }
 
 

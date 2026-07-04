@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import { addclient } from "../../services/apiGestionclient";
 import { Trophy } from "lucide-react";
-export default function Addclientform() {
+export default function Addclientform( {setidclient}) {
   const [clientdata, setclientdata] = useState({
     nom: "",
     numero: "",
     adresse: "",
   });
+
   const handlesubmit=async()=>{
     try {
          const response =await addclient(clientdata)
+          console.log("client ajouté",response.data)
+          console.log("hhhhd",response.data.newclient._id)
+          setidclient(response.data._id)
          setclientdata({nom:"",numero:"",adresse:""})
-         console.log("véhicule ajouté",response.data)
+        
     } catch (error) {
           console.error("❌ خطأ أثناء إضافة السيارة:", error);
       alert("حدث خطأ أثناء الإضافة.");

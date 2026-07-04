@@ -3,7 +3,7 @@ import FenetreForm from "./Productsform/FenetreForm";
 import Addclientform from "./Clientform/Addclientform";
 import { XIcon } from "@animateicons/react/lucide";
 
-export default function Popup({ open, setOpen, setSelected, selected }) {
+export default function Popup({ open, setOpen, setSelected, selected ,setidclient}) {
   console.log(open);
 
   return (
@@ -12,7 +12,7 @@ export default function Popup({ open, setOpen, setSelected, selected }) {
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-10">
           <div className="bg-[#614c38] p-6 rounded-lg     flex justify-center">
             {/* <FenetreForm /> */}
-            <Addclientform/>
+            <Addclientform setidclient={setidclient}/>
             <div
               onClick={() => {
                 setOpen(false);
