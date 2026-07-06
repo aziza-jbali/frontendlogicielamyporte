@@ -11,6 +11,7 @@ export default function Clientstep() {
   const [clients, setclients] = useState([]);
   // const [wantedclient,setwantedclient]=useState({})
   const [client,setclient]=useState({});
+  console.log("voila le client",client)
    const [open,setOpen]=useState(false)
  
   useEffect(() => {

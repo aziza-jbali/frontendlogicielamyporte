@@ -14,6 +14,7 @@ export default function Addclientform( {setclient}) {
           console.log("client ajouté",response.data)
           console.log("here the client is",response.data.newclient)
           setclient(response.data.newclient)
+          
          setclientdata({nom:"",numero:"",adresse:""})
         
     } catch (error) {
