@@ -10,9 +10,9 @@ export default function Clientstep() {
   const [query, setquery] = useState(" ");
   const [clients, setclients] = useState([]);
   // const [wantedclient,setwantedclient]=useState({})
-  const [idclient,setidclient]=useState("");
+  const [client,setclient]=useState({});
    const [open,setOpen]=useState(false)
-  console.log("hellovvv",idclient)
+ 
   useEffect(() => {
     const fetchclient = async () => {
       try {
@@ -53,7 +53,7 @@ export default function Clientstep() {
           <div className="rounded-xl overflow-hidden  absolute top-13 z-10 cursor-pointer">
             {clients
               ? clients.map((client,index) => (
-                  <div className=" bg-amber-50 p-2 fff  " key={client._id}  onClick={()=>{setidclient(client._id)}}>
+                  <div className=" bg-amber-50 p-2 fff  " key={client._id}  onClick={()=>{setclient(client)}}>
                     {" "}
                     <div className="ml-1 ">
                       <i class="fa-solid fa-magnifying-glass pr-4.5 "></i>
@@ -77,7 +77,7 @@ export default function Clientstep() {
         <div className=" flex items-center justify-center ">
            <div className="transition-all duration-300 ease-in-out hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl" onClick={()=>(setOpen(!open))}>  <p> + Ajouter un client </p></div>
         </div>
-        <Popup1 open={open} setOpen={setOpen} setidclient={setidclient}></Popup1>
+        <Popup1 open={open} setOpen={setOpen} setclient={setclient}></Popup1>
       </div>
    
   );

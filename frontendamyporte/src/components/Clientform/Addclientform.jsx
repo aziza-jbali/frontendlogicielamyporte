@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { addclient } from "../../services/apiGestionclient";
 import { Trophy } from "lucide-react";
-export default function Addclientform( {setidclient}) {
+export default function Addclientform( {setclient}) {
   const [clientdata, setclientdata] = useState({
     nom: "",
     numero: "",
@@ -12,8 +12,8 @@ export default function Addclientform( {setidclient}) {
     try {
          const response =await addclient(clientdata)
           console.log("client ajouté",response.data)
-          console.log("hhhhd",response.data.newclient._id)
-          setidclient(response.data._id)
+          console.log("here the client is",response.data.newclient)
+          setclient(response.data.newclient)
          setclientdata({nom:"",numero:"",adresse:""})
         
     } catch (error) {

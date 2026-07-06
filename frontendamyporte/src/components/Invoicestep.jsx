@@ -2,6 +2,7 @@ import { Bell, Rocket, User, DoorOpen, Library, LogOut } from "lucide-react";
 import { useState } from "react";
 import Pagination from "./Pagination";
 import Popup1 from "./Popup1";
+import { frameData } from "framer-motion";
 export default function Invoicestep() {
   const [rows, setRows] = useState([1]);
   const [open, setOpen] = useState(false);
@@ -11,6 +12,20 @@ export default function Invoicestep() {
   function addRow() {
     setRows([...rows, rows.length + 1]);
   }
+  const [formdata, setformdata] = useState({
+      produit: "gggg",
+      largeur:"",
+      hauteur:"",
+      couleur: "",
+      quantite:"",
+    });
+
+    const [fenetredata,setfenetredata]=useState({
+
+    })
+    console.log("votre produit",formdata.produit)
+        console.log("la quantité",formdata.quantite)
+
 
   return (
       
@@ -48,11 +63,13 @@ export default function Invoicestep() {
         <div className="mt-15 flex justify-center    ">
           <div className="w-full max-w-4xl  p-4 rounded-xl">
             {/* Header */}
-            <div className="grid grid-cols-6 font-bold text-center  pb-3">
+            <div className="grid grid-cols-7 font-bold text-center  pb-3">
               <h1 className="  ">Produit</h1>
               <h1 className="  ">Hauteur</h1>
               <h1 className="  ">Largeur</h1>
+              <h1>Quantité</h1>
               <h1 className="  ">P.Unitaire</h1>
+              
               <h1 className="  ">Montant</h1>
               <div className="  ">
                 <button
@@ -69,29 +86,21 @@ export default function Invoicestep() {
             {/* Row */}
             {rows.map((item) => (
               <div
-                className="grid grid-cols-6 gap-4 items-center mt-4 "
+                className="grid grid-cols-7 gap-4 items-center mt-4 "
                 key={item}
               >
                 <select
                   className="border rounded-full px-3 py-2 text-sm   "
                   // value={selected}
-                  // onChange={(e) => {
-                  //   const value = e.target.value;
-                  //   setSelected(value);
+                  value={formdata.produit}
+                  onChange={(e) => {
+                    setformdata({...formdata,produit:e.target.value})
+                   }}
 
-                  //   if (
-                  //     value === "Monobloc" ||
-                  //     value === "Fenetrealuminium" ||
-                  //     value === "Rouleauxrideaux"
-                  //   ) {
-                  //     setOpen(true);
-                  //   } else {
-                  //     setOpen(false);
-                  //   }
-                  // }}
                 >
-                  <option value="Portealuminium">Porte aluminium</option>
                   <option value="Monobloc">Monobloc</option>
+                  <option value="Portealuminium">Porte aluminium</option>
+                  
                   <option value="Fenetrealuminium">Fenetre aluminium</option>
 
                   <option value="ferforgie">Fer forgé</option>
@@ -104,14 +113,18 @@ export default function Invoicestep() {
                   type="number"
                   className="border rounded-full px-3 py-2   "
                   placeholder="cm"
+                  value={formdata.hauteur}
+                  onChange={(e)=>{setformdata({...frameData,hauteur:e.target.value})}}
                 />
 
                 <input
                   type="number"
                   className="border rounded-full px-3 py-2   "
                   placeholder="cm"
+                  value={formdata.largeur}
+                  onChange={(e)=>{setformdata({...frameData,largeur:e.target.value})}}
                 />
-
+                  <input  value={formdata.quantite } type="number" className="border rounded-full px-3 py-2" onChange={(e)=>setformdata({...formdata,quantite:e.target.value})} />
                 <div className="text-center    text-gray-500">..........</div>
 
                 <div className="text-center    text-gray-500">........</div>
@@ -128,7 +141,7 @@ export default function Invoicestep() {
                 </div>
               </div>
             ))}
-            <Popup1 open={open} setOpen={setOpen}  selected={selected} setSelected={setSelected}/>
+            <Popup1 open={open} setOpen={setOpen}  selected={selected} setSelected={setSelected} formdata={formdata} setformdata={setformdata}/>
           </div>
         </div>
       </div>

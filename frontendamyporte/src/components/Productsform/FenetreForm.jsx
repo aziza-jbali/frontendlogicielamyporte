@@ -51,10 +51,29 @@
 // //     quantite,factureId
 // //   } = req.body;
 
-
+//  ,
+//     choix,
+//     cas,
+//     hauteur,
+//     largeur,
+//     couleur,
+//     positionFenetre,
+//     quantite
 import React from "react";
+import { useState } from "react";
 
-export default function FenetreForm() {
+export default function FenetreForm({formdata,setformdata}) {
+    const [fenetredata, setfenetredata] = useState({
+      produit: formdata.produit,
+       largeur:formdata.largeur,
+      hauteur:formdata.hauteur,
+      couleur: "",
+      positionFenetre: "",
+      choix:"",
+      quantite:formdata.quantite,
+    });
+    console.log('hellllllllll')
+  console.log("chouf",fenetredata.quantite)
   return (
     <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-8">
       {/* Title */}
@@ -69,10 +88,10 @@ export default function FenetreForm() {
           <label className="mb-2 text-sm font-semibold text-gray-700">
             Choix :
           </label>
-          <select className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#614c38]">
-            <option>Choix 1</option>
-            <option>Choix 2</option>
-            <option>Choix 3</option>
+          <select className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#614c38]" value={fenetredata.choix} onC>
+            <option value="1">Choix 1</option>
+            <option value="2">Choix 2</option>
+            <option value="3">Choix 3</option>
           </select>
         </div>
 
