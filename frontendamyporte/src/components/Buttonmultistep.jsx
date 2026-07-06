@@ -1,7 +1,13 @@
 import React from "react";
-import { MoveLeftIcon, MoveRightIcon } from "@animateicons/react/lucide";
+import { MoveLeftIcon, MoveRightIcon  } from "@animateicons/react/lucide";
+import {createinvoi} from "../services/apiGestioninvoice.js"
 export default function Buttonmultistep({ Myposition ,setMyposition }) {
    console.log(Myposition)
+   const createinvoice=async()=>{
+    if(Myposition === 1){
+      
+    }
+   }
   return (
     <div>
       <div className="  flex justify-end gap-10 mt-10 fff">

@@ -16,15 +16,14 @@ export default function Invoicestep() {
       produit: "gggg",
       largeur:"",
       hauteur:"",
-      couleur: "",
       quantite:"",
     });
 
-    const [fenetredata,setfenetredata]=useState({
-
-    })
+    
     console.log("votre produit",formdata.produit)
         console.log("la quantité",formdata.quantite)
+         console.log("hauteur",formdata.hauteur)
+         console.log(" largeur",formdata.largeur)
 
 
   return (
@@ -114,7 +113,7 @@ export default function Invoicestep() {
                   className="border rounded-full px-3 py-2   "
                   placeholder="cm"
                   value={formdata.hauteur}
-                  onChange={(e)=>{setformdata({...frameData,hauteur:e.target.value})}}
+                  onChange={(e)=>{setformdata({...formdata,hauteur:e.target.value})}}
                 />
 
                 <input
@@ -122,7 +121,7 @@ export default function Invoicestep() {
                   className="border rounded-full px-3 py-2   "
                   placeholder="cm"
                   value={formdata.largeur}
-                  onChange={(e)=>{setformdata({...frameData,largeur:e.target.value})}}
+                  onChange={(e)=>{setformdata({...formdata,largeur:e.target.value})}}
                 />
                   <input  value={formdata.quantite } type="number" className="border rounded-full px-3 py-2" onChange={(e)=>setformdata({...formdata,quantite:e.target.value})} />
                 <div className="text-center    text-gray-500">..........</div>

@@ -61,19 +61,32 @@
 //     quantite
 import React from "react";
 import { useState } from "react";
+import {costwind} from "../../services/apiGestionligne.js"
 
 export default function FenetreForm({formdata,setformdata}) {
     const [fenetredata, setfenetredata] = useState({
       produit: formdata.produit,
-       largeur:formdata.largeur,
+      largeur:formdata.largeur,
       hauteur:formdata.hauteur,
       couleur: "",
       positionFenetre: "",
       choix:"",
       quantite:formdata.quantite,
+      cas:""
     });
     console.log('hellllllllll')
-  console.log("chouf",fenetredata.quantite)
+  console.log("chouf",fenetredata.quantite);
+  console.log("choix",fenetredata.choix);
+  console.log("position",fenetredata.positionFenetre);
+   console.log("couleur",fenetredata.couleur);
+  const handlesubmit=async()=>{
+        try {
+          const response=await costwind(fenetredata)
+          console.log(response)
+        } catch (error) {
+          console.error("❌", error);
+        }
+      }
   return (
     <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-8">
       {/* Title */}
@@ -88,7 +101,7 @@ export default function FenetreForm({formdata,setformdata}) {
           <label className="mb-2 text-sm font-semibold text-gray-700">
             Choix :
           </label>
-          <select className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#614c38]" value={fenetredata.choix} onC>
+          <select className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#614c38]" value={fenetredata.choix} onChange={(e)=>setfenetredata({...fenetredata,choix:e.target.value})}>
             <option value="1">Choix 1</option>
             <option value="2">Choix 2</option>
             <option value="3">Choix 3</option>
@@ -100,11 +113,11 @@ export default function FenetreForm({formdata,setformdata}) {
           <label className="mb-2 text-sm font-semibold text-gray-700">
             Couleur :
           </label>
-          <select className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#614c38]">
-            <option>Blanc</option>
-            <option>Noir</option>
-            <option>Gris</option>
-            <option>Marron</option>
+          <select className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#614c38]" value={fenetredata.couleur} onChange={(e)=>setfenetredata({...fenetredata,couleur:e.target.value})}>
+            <option value="blanc">Blanc</option>
+            <option value="noir">Noir</option>
+            <option value="gris">Gris</option>
+            <option value="marron">Marron</option>
           </select>
         </div>
 
@@ -113,7 +126,7 @@ export default function FenetreForm({formdata,setformdata}) {
           <label className="mb-2 text-sm font-semibold text-gray-700">
             Position Fenetre :
           </label>
-          <select className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#614c38]">
+          <select className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#614c38]" value={fenetredata.positionFenetre} onChange={(e)=>setfenetredata({...fenetredata,positionFenetre:e.target.value})}>
             <option value="poignet">Poignet</option>
             <option value="collision">Collision</option>
           </select>
@@ -162,7 +175,7 @@ export default function FenetreForm({formdata,setformdata}) {
           Annuler
         </button>
 
-        <button className="px-6 py-3 rounded-xl bg-[#614c38] text-white hover:bg-[#4f3d2f] transition">
+        <button className="px-6 py-3 rounded-xl bg-[#614c38] text-white hover:bg-[#4f3d2f] transition" onClick={()=>handlesubmit()}>
           Enregistrer
         </button>
       </div>
