@@ -74,6 +74,8 @@ export default function FenetreForm({formdata,setformdata}) {
       quantite:formdata.quantite,
       cas:""
     });
+    console.log("MOUNT Buttonmultistep225441");
+
     console.log('hellllllllll')
   console.log("chouf",fenetredata.quantite);
   console.log("choix",fenetredata.choix);

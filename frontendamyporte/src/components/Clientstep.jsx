@@ -6,12 +6,11 @@ import { filter } from "framer-motion/m";
 import { UserPlusIcon } from "@animateicons/react/lucide";
 import Pagination from "./Pagination.jsx";
 import Popup1 from "./Popup1.jsx";
-export default function Clientstep() {
+export default function Clientstep({client,setclient}) {
   const [query, setquery] = useState(" ");
   const [clients, setclients] = useState([]);
   // const [wantedclient,setwantedclient]=useState({})
-  const [client,setclient]=useState({});
-  console.log("voila le client",client)
+  
    const [open,setOpen]=useState(false)
  
   useEffect(() => {
