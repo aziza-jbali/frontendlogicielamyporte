@@ -3,8 +3,9 @@ import Pagination from '../components/Pagination'
 import Buttonmultistep from '../components/Buttonmultistep'
 import Clientstep from '../components/Clientstep'
 import Invoicestep from '../components/Invoicestep'
-
 export default function WizardLayout() {
+  const [activeform,setactiveform]=useState("")
+
   const [client,setclient]=useState({});
   console.log("voila le client",client)
   const [Myposition,setMyposition]=useState(1)
@@ -13,9 +14,9 @@ export default function WizardLayout() {
       <Pagination/>
       {/* <Clientstep/> */}
       {/* <Invoicestep/> */}
-      {Myposition  ===1  &&(<Clientstep client={client} setclient={setclient}/>)}
-      {Myposition  ===2  &&(<Invoicestep/>)}
-      <Buttonmultistep Myposition={Myposition} setMyposition={setMyposition} client={client}/>
+      {Myposition  ===1  &&(<Clientstep client={client} setclient={setclient} setactiveform={setactiveform} activeform={activeform}/>)}
+      {Myposition  ===2  &&(<Invoicestep setactiveform={setactiveform} activeform={activeform}  client={client} />)}
+      <Buttonmultistep Myposition={Myposition} setMyposition={setMyposition} client={client} />
     </div>
   )
 }

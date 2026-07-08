@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { addclient } from "../../services/apiGestionclient";
 import { Trophy } from "lucide-react";
-export default function Addclientform( {setclient}) {
+export default function Addclientform( {setclient,}) {
   const [clientdata, setclientdata] = useState({
     nom: "",
     numero: "",

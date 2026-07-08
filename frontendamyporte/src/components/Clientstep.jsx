@@ -6,7 +6,7 @@ import { filter } from "framer-motion/m";
 import { UserPlusIcon } from "@animateicons/react/lucide";
 import Pagination from "./Pagination.jsx";
 import Popup1 from "./Popup1.jsx";
-export default function Clientstep({client,setclient}) {
+export default function Clientstep({client,setclient,setactiveform ,activeform}) {
   const [query, setquery] = useState(" ");
   const [clients, setclients] = useState([]);
   // const [wantedclient,setwantedclient]=useState({})
@@ -75,9 +75,14 @@ export default function Clientstep({client,setclient}) {
           </div>
         </div>
         <div className=" flex items-center justify-center ">
-           <div className="transition-all duration-300 ease-in-out hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl" onClick={()=>(setOpen(!open))}>  <p> + Ajouter un client </p></div>
+           <div className="transition-all duration-300 ease-in-out fff hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl" onClick={() => {
+  setOpen(!open);
+  setactiveform("client");
+                    console.log("produgggggb");
+
+}}>  <p> + Ajouter un client </p></div>
         </div>
-        <Popup1 open={open} setOpen={setOpen} setclient={setclient}></Popup1>
+        <Popup1 open={open} setOpen={setOpen} setclient={setclient} activeform={activeform}></Popup1>
       </div>
    
   );
