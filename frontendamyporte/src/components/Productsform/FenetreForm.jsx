@@ -1,89 +1,59 @@
-// import React from 'react'
 
-// export default function FenetreForm() {
-//   return (
-//     <div className='w-[90%] flex fff gap-4 p-7 text-white'>
-//       <div className='flex flex-col'>
-//         <label className='mb-2'>Choix</label>
-//         <select className='bg-[#614c38] rounded-2xl'>
-//         <option value=" ">choix 1</option>
-//         <option value=" ">choix 2</option>
-//         <option value=" ">choix 3</option>
-
-//       </select></div>
-//       <div className='flex flex-col'>
-//         <label className='mb-2'>Couleur</label>
-//         <select>
-//         <option value=" ">blanc</option>
-//         <option value=" ">noir</option>
-//         <option value=" ">gris</option>
-//         <option value="marron">marron</option>
-
-
-//       </select>
-//       </div>
-//       <div className='flex flex-col'>
-//             <label className='mb-2'>PositionFenetre</label>
-//         <select>
-//         <option value="poignet">Poignet</option>
-//         <option value="collision">Collision</option>
-        
-//         </select>
-//       </div>
-//       <div></div>
-//       <div></div>
-//     </div>
-//   )
-// }
-
-
-
-
-
-// //   const {
-// //     produit,
-// //     choix,
-// //     cas,
-// //     hauteur,
-// //     largeur,
-// //     couleur,
-// //     positionFenetre,
-// //     quantite,factureId
-// //   } = req.body;
-
-//  ,
-//     choix,
-//     cas,
-//     hauteur,
-//     largeur,
-//     couleur,
-//     positionFenetre,
-//     quantite
 import React from "react";
 import { useState } from "react";
 import {costwind} from "../../services/apiGestionligne.js"
 
-export default function FenetreForm({formdata,setformdata}) {
+export default function FenetreForm({formdata,setformdata,invoice}) {
+  // console.log("fregardejjj",formdata)
+  console.log("this is the invoice twa",invoice)
+  console.log("this is the id of invoice",invoice._id)
     const [fenetredata, setfenetredata] = useState({
-      produit: formdata.produit,
-      largeur:formdata.largeur,
-      hauteur:formdata.hauteur,
-      couleur: "",
-      positionFenetre: "",
+      // produit: formdata.produit,
+      // largeur:formdata.largeur,
+      // hauteur:formdata.hauteur,
+      // couleur: "",
+      // positionFenetre: "",
+      // choix:"",
+      // quantite:formdata.quantite,
+      // cas:"",
+      // factureId :formdata.factureId
+       produit: "",
+      largeur:"",
+       hauteur:"",
+       couleur: "",
+       positionFenetre: "",
       choix:"",
-      quantite:formdata.quantite,
-      cas:""
-    });
-    console.log("MOUNT Buttonmultistep225441");
+      quantite:"formdata.quantite,",
+      // cas:"",
+      // factureId :formdata.factureId
 
-    console.log('hellllllllll')
-  console.log("chouf",fenetredata.quantite);
-  console.log("choix",fenetredata.choix);
-  console.log("position",fenetredata.positionFenetre);
-   console.log("couleur",fenetredata.couleur);
+    });
+    const datafen={
+      ...fenetredata,
+       produit: "formdata.produit",
+      largeur:"formdata.largeur",
+       hauteur:"formdata.hauteur",
+      
+       positionFenetre: "",
+      choix:"",
+      quantite:"",
+      factureId:invoice._id
+    }
+    console.log("data fen",datafen)
+  //   console.log("MOUNT Buttonmultistep225441");
+
+  //   console.log('hellllllllll')
+  // console.log("chouf",fenetredata.quantite);
+  // console.log("choix",fenetredata.choix);
+  // console.log("position",fenetredata.positionFenetre);
+  //  console.log("couleur",fenetredata.couleur);
+  //     console.log("idclient1245",fenetredata._idClient);
+  //           console.log("quantite2",fenetredata.quantite);
+
+
   const handlesubmit=async()=>{
         try {
-          const response=await costwind(fenetredata)
+          const response=await costwind(datafen)
           console.log(response)
         } catch (error) {
           console.error("❌", error);

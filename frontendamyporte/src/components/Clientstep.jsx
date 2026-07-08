@@ -21,9 +21,9 @@ export default function Clientstep({client,setclient,setactiveform ,activeform})
         const newarray = response.data.filter((client) =>
           Object.values(client).includes(query),
         );
-        console.log(newarray);
+        // console.log(newarray);
         setclients(newarray);
-        console.log("i am working");
+        // console.log("i am working");
       } catch (error) {
         console.error("❌ Erreur lors de la récupération du client :", error);
       }

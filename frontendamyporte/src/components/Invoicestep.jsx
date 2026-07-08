@@ -3,29 +3,38 @@ import { useState } from "react";
 import Pagination from "./Pagination";
 import Popup1 from "./Popup1";
 import { frameData } from "framer-motion";
-export default function Invoicestep({setactiveform ,activeform,client}) {
+export default function Invoicestep({setactiveform ,activeform,client,invoice}) {
+  console.log("invoiceyht",invoice)
   const [rows, setRows] = useState([1]);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("");
   console.log("here",selected)
-  console.log("voila le client ",client)
+  // console.log("voila le client ",client)
+  // console.log("regarderbbbb,",invoice)
+  // console.log("regarderid,",invoice._id)
 
+  console.log("hellllllloooobgjhhx225323")
   function addRow() {
     setRows([...rows, rows.length + 1]);
   }
+  
   const [formdata, setformdata] = useState({
       produit: "",
       largeur:"",
       hauteur:"",
       quantite:"",
-     idClient:client._id
+      
     });
+  
 
     
     console.log("votre produit",formdata.produit)
-        console.log("la quantité",formdata.quantite)
-         console.log("hauteur",formdata.hauteur)
-         console.log(" largeur",formdata.largeur)
+    console.log("la quantité",formdata.quantite)
+    console.log("hauteur",formdata.hauteur)
+    console.log(" largeur",formdata.largeur)
+    console.log("regarderid,",invoice._id)
+    console.log(" factureId",formdata.factureId)
+
 
 
   return (
@@ -148,7 +157,7 @@ export default function Invoicestep({setactiveform ,activeform,client}) {
                 </div>
               </div>
             ))}
-            <Popup1 open={open} setOpen={setOpen}  selected={selected} setSelected={setSelected} formdata={formdata} setformdata={setformdata} activeform={activeform}/>
+            <Popup1 open={open} setOpen={setOpen}  selected={selected} setSelected={setSelected} formdata={formdata} setformdata={setformdata} activeform={activeform} invoice={invoice}/>
           </div>
         </div>
       </div>

@@ -1,53 +1,58 @@
 import React, { useState } from "react";
 import { MoveLeftIcon, MoveRightIcon } from "@animateicons/react/lucide";
 import { createinvoi } from "../services/apiGestioninvoice.js";
-export default function Buttonmultistep({ Myposition, setMyposition, client }) {
-console.log("idn",client._id)
-//   console.log ("look",client._id)
-//   const [datainvoice,setdatainvoice]=useState({
-//     idClient:client._id,
-//     date:new Date().toISOString()
-//   });
-//   console.log(datainvoice.idClient)
-//  console.log("id111",client._id)
-// console.log("MOUNT Buttonmultistep");
-// console.log("client",client)
-// const initialInvoice = {
-//   idClient: client.nom,
-//   date: new Date().toISOString()
-// };
+export default function Buttonmultistep({
+  Myposition,
+  setMyposition,
+  client,
+  invoice,
+  setinvoice,
+}) {
+  // console.log("idn", client._id);
+  //   console.log ("look",client._id)
+  //   const [datainvoice,setdatainvoice]=useState({
+  //     idClient:client._id,
+  //     date:new Date().toISOString()
+  //   });
+  //   console.log(datainvoice.idClient)
+  //  console.log("id111",client._id)
+  // console.log("MOUNT Buttonmultistep");
+  // console.log("client",client)
+  // const initialInvoice = {
+  //   idClient: client.nom,
+  //   date: new Date().toISOString()
+  // };
 
-// console.log("before state:", initialInvoice);
+  // console.log("before state:", initialInvoice);
 
-// const [datainvoice, setdatainvoice] = useState({
-//   idClient:"",
-//    date:new Date().toISOString()
-// });
+  // const [datainvoice, setdatainvoice] = useState({
+  //   idClient:"",
+  //    date:new Date().toISOString()
+  // });
 
-// console.log("state:", datainvoice);  
-  console.log("my position",Myposition);
-  
+  // console.log("state:", datainvoice);
+  console.log("my position", Myposition);
+
   const createinvoice = async () => {
-  const datainvoice = {
-    idClient: client._id,
-    date: new Date().toISOString(),
-   };
-  // await  setdatainvoice({...datainvoice,idClient:client._id})
-
+    const datainvoice = {
+      idClient: client._id,
+      date: new Date().toISOString(),
+    };
+    console.log("datainvoice",datainvoice)
+    // await  setdatainvoice({...datainvoice,idClient:client._id})
 
     try {
       if (Myposition === 1) {
-      
-        const response = await createinvoi(
-         datainvoice
-        );
+        const response = await createinvoi(datainvoice);
+        setinvoice(response.data.newinvoice);
+        console.log("this is invoice1",response.data.newinvoice );
         console.log("regarde", response);
       }
     } catch (error) {
       console.error("❌ ", error);
     }
   };
-    // console.log("state2:", datainvoice);  
+  // console.log("state2:", datainvoice);
 
   return (
     <div>
