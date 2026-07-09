@@ -24,7 +24,8 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice}) 
       largeur:"",
       hauteur:"",
       quantite:"",
-      
+      prixunitaire:"",
+      montant:""
     });
   
 
@@ -35,6 +36,7 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice}) 
     console.log(" largeur",formdata.largeur)
     console.log("regarderid,",invoice._id)
     console.log(" factureId",formdata.factureId)
+    console.log("bvfre",formdata.prixunitaire)
 
 
 
@@ -137,7 +139,7 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice}) 
                   onChange={(e)=>{setformdata({...formdata,largeur:e.target.value})}}
                 />
                   <input  value={formdata.quantite } type="number" className="border rounded-full px-3 py-2" onChange={(e)=>setformdata({...formdata,quantite:e.target.value})} />
-                <div className="text-center    text-gray-500">..........</div>
+                <div className="text-center    text-gray-500">{formdata.prixunitaire }</div>
 
                 <div className="text-center    text-gray-500">........</div>
                 <div className="   flex justify-evenly ">

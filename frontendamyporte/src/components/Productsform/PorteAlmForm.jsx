@@ -40,10 +40,13 @@ export default function FenetreForm({ formdata, setformdata, invoice }) {
     try {
       const response = await costporte(datapor);
       console.log(response);
+      setformdata({...formdata, prixunitaire:response.data.prixUnitaire})
     } catch (error) {
       console.error("❌", error);
     }
   };
+  // prixunitaire:"",
+  //     montant:""
   return (
     <div className="w-full max-w-3xl mx-auto bg-white rounded-2xl shadow-lg p-8">
       {/* Title */}

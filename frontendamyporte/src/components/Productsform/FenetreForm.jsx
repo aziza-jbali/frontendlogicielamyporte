@@ -98,8 +98,12 @@ export default function FenetreForm({ formdata, setformdata, invoice }) {
           >
             <option value="poignet">Poignet</option>
             <option value="collision">Collision</option>
+          <option value="compas">Compas</option>
+
           </select>
         </div>
+        {/* extention */}
+        <div></div>
       </div>
 
       {/* Buttons */}
