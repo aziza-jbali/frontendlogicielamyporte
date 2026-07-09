@@ -111,7 +111,7 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice}) 
                   <option value="Monobloc">Monobloc</option>
                   <option value="Portealuminium">Porte aluminium</option>
                   
-                  <option value="Fenetrealuminium">Fenetre aluminium</option>
+                  <option value="fenetre aluminium">Fenetre aluminium</option>
 
                   <option value="ferforgie">Fer forgé</option>
                   <option value="Rouleauxrideaux">Rouleaux rideaux</option>
