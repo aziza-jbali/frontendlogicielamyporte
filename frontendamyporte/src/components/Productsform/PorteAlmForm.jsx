@@ -38,8 +38,9 @@ export default function FenetreForm({ formdata, setformdata, invoice }) {
 
   const handlesubmit = async () => {
     try {
+      co
       const response = await costporte(datapor);
-      console.log(response);
+      console.log("responsedata",response.data);
       setformdata({...formdata, prixunitaire:response.data.prixUnitaire})
     } catch (error) {
       console.error("❌", error);
