@@ -6,40 +6,66 @@ import { frameData } from "framer-motion";
 export default function Invoicestep({setactiveform ,activeform,client,invoice,setdatafinal,datafinal}) {
   console.log("invoiceyht",invoice)
   console.log('client client',client)
-  const [rows, setRows] = useState([1]);
+  // const [rows, setRows] = useState([1]);
+  const [rows, setRows] = useState([
+  {
+    produit: "",
+    hauteur: "",
+    largeur: "",
+    quantite: "",
+    prixUnitaire: "",
+    montant: ""
+  }
+]);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("");
-  
+  const [selectedRow, setSelectedRow] = useState(null);
+
   console.log("here",selected)
   // console.log("voila le client ",client)
   // console.log("regarderbbbb,",invoice)
   // console.log("regarderid,",invoice._id)
 
   console.log("hellllllloooobgjhhx225323")
+  // function addRow() {
+  //   setRows([...rows, rows.length + 1]);
+  // }
   function addRow() {
-    setRows([...rows, rows.length + 1]);
-  }
-  
-  const [formdata, setformdata] = useState({
+  setRows([
+    ...rows,
+    {
       produit: "",
-      largeur:"",
-      hauteur:"",
-      quantite:"",
-      prixunitaire:"",
-      montant:""
+      hauteur: "",
+      largeur: "",
+      quantite: "",
+      prixUnitaire: "",
+      montant: ""
+    }
+  ]);
+}
+   const [formdata, setformdata] = useState({
     });
   
 
     
-    console.log("votre produit",formdata.produit)
-    console.log("la quantité",formdata.quantite)
-    console.log("hauteur",formdata.hauteur)
-    console.log(" largeur",formdata.largeur)
-    console.log("regarderid,",invoice._id)
-    console.log(" factureId",formdata.factureId)
-    console.log("bvfre",formdata.prixunitaire)
+    // console.log("votre produit",formdata.produit)
+    // console.log("la quantité",formdata.quantite)
+    // console.log("hauteur",formdata.hauteur)
+    // console.log(" largeur",formdata.largeur)
+    // console.log("regarderid,",invoice._id)
+    // console.log(" factureId",formdata.factureId)
+    // console.log("bvfre",formdata.prixunitaire)
 
 
+function updateRow(index, field, value) {
+  const updatedRows = [...rows];
+  updatedRows[index][field] = value;
+  setRows(updatedRows);
+}
+
+function removeRow(index) {
+  setRows(rows.filter((_, i) => i !== index));
+}
 
   return (
       
@@ -98,17 +124,20 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice,se
             </div>
 
             {/* Row */}
-            {rows.map((item) => (
+            {/* {rows.map((item,index) => (
               <div
                 className="grid grid-cols-7 gap-4 items-center mt-4 "
-                key={item}
+                key={index}
               >
                 <select
                   className="border rounded-full px-3 py-2 text-sm   "
                   // value={selected}
-                  value={formdata.produit}
+                  value={item["produit"]}
                   onChange={(e) => {
-                    setformdata({...formdata,produit:e.target.value})
+                    const newRows = [...rows]; 
+                    newRows[index].produit = e.target.value; 
+                    setRows(newRows);
+                    // setRows([...rows,rows[index].produit:e.target.value])
                    }}
 
                 >
@@ -161,8 +190,91 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice,se
                   }}><i class="fa-solid fa-gear"></i></button>
                 </div>
               </div>
-            ))}
-            <Popup1 open={open} setOpen={setOpen}  selected={selected} setSelected={setSelected} formdata={formdata} setformdata={setformdata} activeform={activeform} invoice={invoice} setdatafinal={setdatafinal}/>
+            ))} */}
+            {rows.map((item, index) => (
+  <div
+    key={index}
+    className="grid grid-cols-7 gap-4 items-center mt-4"
+  >
+    {/* Produit */}
+    <select
+      className="border rounded-full px-3 py-2 text-sm"
+      value={item.produit}
+      onChange={(e) => updateRow(index, "produit", e.target.value)}
+    >
+      <option value="">Choisir...</option>
+      <option value="Monobloc">Monobloc</option>
+      <option value="Porte aluminium">Porte aluminium</option>
+      <option value="fenetre aluminium">Fenetre aluminium</option>
+      <option value="Fer forgé">Fer forgé</option>
+      <option value="Rouleaux rideaux">Rouleaux rideaux</option>
+      <option value="Moustiquaire">Moustiquaire</option>
+      <option value="Caisson">Caisson</option>
+    </select>
+
+    {/* Hauteur */}
+    <input
+      type="number"
+      placeholder="cm"
+      className="border rounded-full px-3 py-2"
+      value={item.hauteur}
+      onChange={(e) => updateRow(index, "hauteur", e.target.value)}
+    />
+
+    {/* Largeur */}
+    <input
+      type="number"
+      placeholder="cm"
+      className="border rounded-full px-3 py-2"
+      value={item.largeur}
+      onChange={(e) => updateRow(index, "largeur", e.target.value)}
+    />
+
+    {/* Quantité */}
+    <input
+      type="number"
+      className="border rounded-full px-3 py-2"
+      value={item.quantite}
+      onChange={(e) => updateRow(index, "quantite", e.target.value)}
+    />
+
+    {/* Prix */}
+    <div className="text-center text-gray-500">
+      {datafinal.prixUnitaire || "......."}
+    </div>
+
+    {/* Montant */}
+    <div className="text-center text-gray-500">
+      {datafinal.prixtotale || "......."}
+    </div>
+
+    {/* Actions */}
+    <div className="flex justify-evenly">
+      <button onClick={() => removeRow(index)}>
+        <i className="fa-solid fa-trash"></i>
+      </button>
+
+      <button>
+        <i className="fa-solid fa-pen"></i>
+      </button>
+
+      <button
+        onClick={() => {
+          setOpen(true);
+          setactiveform(item.produit);
+           setSelectedRow(index)
+          console.log("item",item);
+          console.log("ahwa",rows[selectedRow])
+          setformdata(rows[selectedRow])
+        }}
+      >
+        <i className="fa-solid fa-gear"></i>
+      </button>
+    </div>
+                <Popup1 open={open} setOpen={setOpen}  selected={selected} setSelected={setSelected} formdata={formdata} setformdata={setformdata} activeform={activeform} invoice={invoice} setdatafinal={setdatafinal}/>
+
+  </div>
+))}
           </div>
         </div>
       </div>
