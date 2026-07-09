@@ -11,6 +11,8 @@ import Invoices from './pages/Invoices.jsx';
 import MainDashboard from './pages/MainDashboard.jsx';
 import Popup from './components/Popup1.jsx';
 import WizardLayout from './Layout/WizardLayout.jsx';
+import { ToastContainer } from "react-toastify";
+
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -28,6 +30,15 @@ function App() {
     {/* <Popup/> */}
     <WizardLayout/>
 
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="colored"
+      />
     </>
   )
 }

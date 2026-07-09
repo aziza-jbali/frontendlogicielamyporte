@@ -5,6 +5,7 @@ import Popup1 from "./Popup1";
 import { frameData } from "framer-motion";
 export default function Invoicestep({setactiveform ,activeform,client,invoice}) {
   console.log("invoiceyht",invoice)
+  console.log('client client',client)
   const [rows, setRows] = useState([1]);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("");
@@ -62,11 +63,11 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice}) 
           <div className=" rounded-3xl bg-white p-4 lg:w-[780px] md:w-[270px] flex justify-between shadow-2xl text-[#b39376] ">
             <div className=" w-1/2 px-2">
               <p>FACTURE A : </p>
-              <p className="font-bold text-xl text-black">lorem </p>
+              <p className="font-bold text-xl text-black">{client.nom}</p>
             </div>
             <div className=" w-1/2 px-2  ">
               <p className="">Contact :</p>
-              <p className="font-bold text-xl text-black"> lorem</p>
+              <p className="font-bold text-xl text-black"> {client.numero}</p>
             </div>
           </div>
         </div>

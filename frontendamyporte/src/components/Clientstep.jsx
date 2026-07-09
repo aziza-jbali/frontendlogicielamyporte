@@ -6,6 +6,7 @@ import { filter } from "framer-motion/m";
 import { UserPlusIcon } from "@animateicons/react/lucide";
 import Pagination from "./Pagination.jsx";
 import Popup1 from "./Popup1.jsx";
+import { notification } from "./toastService.js";
 export default function Clientstep({client,setclient,setactiveform ,activeform}) {
   const [query, setquery] = useState(" ");
   const [clients, setclients] = useState([]);
@@ -15,6 +16,7 @@ export default function Clientstep({client,setclient,setactiveform ,activeform})
  
   useEffect(() => {
     const fetchclient = async () => {
+      
       try {
         const response = await getallclients();
         console.log(response);
@@ -26,6 +28,8 @@ export default function Clientstep({client,setclient,setactiveform ,activeform})
         // console.log("i am working");
       } catch (error) {
         console.error("❌ Erreur lors de la récupération du client :", error);
+        notification.error("Impossible de charger les clients.");
+
       }
     };
     fetchclient();
@@ -53,7 +57,9 @@ export default function Clientstep({client,setclient,setactiveform ,activeform})
           <div className="rounded-xl overflow-hidden  absolute top-13 z-10 cursor-pointer">
             {clients
               ? clients.map((client,index) => (
-                  <div className=" bg-amber-50 p-2 fff  " key={client._id}  onClick={()=>{setclient(client)}}>
+                  <div className=" bg-amber-50 p-2 fff  " key={client._id}  onClick={()=>{setclient(client);
+                    notification.success(`${client.nom} sélectionné`);
+                  }}>
                     {" "}
                     <div className="ml-1 ">
                       <i class="fa-solid fa-magnifying-glass pr-4.5 "></i>
