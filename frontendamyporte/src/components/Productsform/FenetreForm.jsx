@@ -7,12 +7,10 @@ export default function FenetreForm({ formdata, setformdata, invoice }) {
   console.log("this is the invoice twa", invoice);
   console.log("this is the id of invoice", invoice._id);
   const [fenetredata, setfenetredata] = useState({
-    produit: "",
-    largeur: "",
-    hauteur: "",
+   
     couleur: "",
     positionFenetre: "",
-    choix: "",
+    
     // quantite: formdata.quantite,
   });
   const datafen = {
