@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { costwind } from "../../services/apiGestionligne.js";
+import { costporte } from "../../services/apiGestionligne.js";
 
 export default function FenetreForm({ formdata, setformdata, invoice }) {
   // console.log("fregardejjj",formdata)
@@ -11,34 +11,34 @@ export default function FenetreForm({ formdata, setformdata, invoice }) {
     // largeur: "",
     // hauteur: "",
     couleur: "",
-    positionPorte: "",
-   
+    remplissage: "",
+
     // quantite: formdata.quantite,
   });
-    //   produit,
-    //   hauteur,
-    //   largeur,
-    //   choix,
-    //   couleur,
-    //   quantite,
-    //   factureId,
-  const datafen = {
+  //   produit,
+  //   hauteur,
+  //   largeur,
+  //   choix,
+  //   couleur,
+  //   quantite,
+  //   factureId,
+  const datapor = {
     ...Portedata,
     produit: formdata.produit,
     largeur: Number(formdata.largeur),
     hauteur: Number(formdata.hauteur),
 
-    positionFenetre: Portedata.positionPorte,
+    remplissagePorte: Portedata.remplissage,
     choix: Portedata.choix,
-    quantite:formdata.quantite,
+    quantite: formdata.quantite,
     factureId: invoice._id,
   };
-  console.log(typeof datafen.largeur);
-  console.log("data fen", datafen);
+  console.log(typeof datapor.largeur);
+  console.log("data fen", datapor);
 
   const handlesubmit = async () => {
     try {
-      const response = await costwind(datafen);
+      const response = await costporte(datapor);
       console.log(response);
     } catch (error) {
       console.error("❌", error);
@@ -65,6 +65,7 @@ export default function FenetreForm({ formdata, setformdata, invoice }) {
               setPortedata({ ...Portedata, choix: e.target.value })
             }
           >
+            <option >-- Choisir--</option>
             <option value="1">Choix 1</option>
             <option value="2">Choix 2</option>
             <option value="3">Choix 3</option>
@@ -83,6 +84,7 @@ export default function FenetreForm({ formdata, setformdata, invoice }) {
               setPortedata({ ...Portedata, couleur: e.target.value })
             }
           >
+            <option >-- Choisir --</option>
             <option value="blanc">Blanc</option>
             <option value="noir">Noir</option>
             <option value="gris">Gris</option>
@@ -93,20 +95,26 @@ export default function FenetreForm({ formdata, setformdata, invoice }) {
         {/* Position */}
         <div className="flex flex-col">
           <label className="mb-2 text-sm font-semibold text-gray-700">
-            Position Fenetre :
+            Remplissage  Porte :
           </label>
           <select
             className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#614c38]"
-            value={Portedata.positionFenetre}
-          onChange={(e) =>
-  setPortedata({
-    ...Portedata,
-    positionFenetre: e.target.value,
-  })
-}
+            value={Portedata.remplissage}
+            onChange={(e) =>
+              setPortedata({
+                ...Portedata,
+                remplissage: e.target.value,
+              })
+            }
           >
-            <option value="poignet">Poignet</option>
-            <option value="collision">Collision</option>
+            <option value="">-- Choisir le remplissage --</option>
+            <option value="Tout sbl">Tout SBL</option>
+            <option value="Tout lamette">Tout Lamette</option>
+            <option value="Tout Claire">Tout Claire</option>
+            <option value="Haut sbl / Bas lamette">Haut SBL / Bas Lamette </option>
+            <option value="Haut claire / Bas  lamette">Haut Lamette / Bas Claire</option>
+            <option value="Haut claire / Bas lamette">Haut Claire / Bas Lamette</option>
+
           </select>
         </div>
       </div>

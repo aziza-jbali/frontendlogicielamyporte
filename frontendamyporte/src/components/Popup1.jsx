@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FenetreForm from "./Productsform/FenetreForm";
+import PorteAlmForm from "./Productsform/PorteAlmForm";
 import Addclientform from "./Clientform/Addclientform";
 import { XIcon } from "@animateicons/react/lucide";
 
@@ -16,6 +17,7 @@ export default function Popup({ open, setOpen, setSelected, selected ,setclient,
         <div className="fixed  inset-0 bg-black/50 flex justify-center  items-center z-10">
           <div className="bg-[#614c38] p-6 rounded-lg     flex justify-center">
              {whatactive==="fenetre aluminium" && <FenetreForm  formdata={formdata} setformdata={setformdata} invoice={invoice}/> }
+              {whatactive==="Porte aluminium" && <PorteAlmForm formdata={formdata} setformdata={setformdata} invoice={invoice}/> }
             {whatactive==="client" && <Addclientform  setclient={setclient}/>  }
             <div
               onClick={() => {
