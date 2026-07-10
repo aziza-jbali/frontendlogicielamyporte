@@ -133,22 +133,27 @@ export default function FenetreForm({
   setformdata,
   invoice,
   setOpen,
-  setRows
+  setRows,
+  bbbb,
+  index,
+  updateRow,
+  selectedRow
 }) {
-  if (!formdata) return null;
+    // console.log("FenetreForm mounted");
 
+ console.log("hello I WORK222")
   const [fenetredata, setfenetredata] = useState({
-    choix: formdata.choix || "",
-    couleur: formdata.couleur || "",
-    positionFenetre: formdata.positionFenetre || "",
+    choix: bbbb.choix || "",
+    couleur: bbbb.couleur || "",
+    positionFenetre: bbbb.positionFenetre || "",
   });
 
   const handlesubmit = async () => {
     const datafen = {
-      produit: formdata.produit,
-      largeur: Number(formdata.largeur),
-      hauteur: Number(formdata.hauteur),
-      quantite: Number(formdata.quantite),
+      produit: bbbb.produit,
+      largeur: Number(bbbb.largeur),
+      hauteur: Number(bbbb.hauteur),
+      quantite: Number(bbbb.quantite),
 
       choix: fenetredata.choix,
       couleur: fenetredata.couleur,
@@ -160,18 +165,19 @@ export default function FenetreForm({
       
     try {
       const response = await costwind(datafen);
+      updateRow(selectedRow, "prixUnitaire", response.data.prixUnitaire);
+       updateRow(index, "montant", response.data.prixtotale);
+      // setformdata({
+      //   ...formdata,
 
-      setformdata({
-        ...formdata,
+      //   choix: fenetredata.choix,
+      //   couleur: fenetredata.couleur,
+      //   positionFenetre: fenetredata.positionFenetre,
 
-        choix: fenetredata.choix,
-        couleur: fenetredata.couleur,
-        positionFenetre: fenetredata.positionFenetre,
-
-        prixUnitaire: response.data.prixUnitaire,
-        montant: response.data.prixtotale,
-      });
-      setRows([])
+      //   prixUnitaire: response.data.prixUnitaire,
+      //   montant: response.data.prixtotale,
+      // });
+      // setRows([])
       setOpen(false);
     } catch (error) {
       console.error("❌", error);

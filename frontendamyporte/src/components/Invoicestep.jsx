@@ -20,10 +20,10 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice,se
 // formdata.montant
 // formdata.prixUnitaire
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState("");
+  // const [selected, setSelected] = useState("");
   const [selectedRow, setSelectedRow] = useState(null);
 
-  console.log("here",selected)
+  // console.log("here",selected)
   // console.log("voila le client ",client)
   // console.log("regarderbbbb,",invoice)
   // console.log("regarderid,",invoice._id)
@@ -246,11 +246,11 @@ function removeRow(index) {
 
     {/* Prix */}
     <div className="text-center text-gray-500">
-      {item.prixUnitaire }
+      {item.prixUnitaire || "......."}
     </div>
     {/* Montant */}
     <div className="text-center text-gray-500">
-      {item.montant }
+      {item.montant || "........" }
     </div>
 
     {/* Actions */}
@@ -267,16 +267,20 @@ function removeRow(index) {
         onClick={() => {
           setOpen(true);
           setactiveform(item.produit);
-           setSelectedRow(index)
-          console.log("item",item);
-          console.log("ahwa",rows[selectedRow])
+          setSelectedRow(index)
+          console.log("selectedRow",selectedRow)
+          let a=index;
+          console.log("aaaa",a)
+          // console.log("item",item);
+         console.log("ahwa",rows[index])
           setformdata(rows[selectedRow])
         }}
       >
         <i className="fa-solid fa-gear"></i>
       </button>
     </div>
-                <Popup1 open={open} setOpen={setOpen}  selected={selected} setSelected={setSelected} formdata={formdata} setformdata={setformdata} activeform={activeform} invoice={invoice} setdatafinal={setdatafinal} setRows={setRows} />
+                <Popup1 open={open} setOpen={setOpen} formdata={formdata} setformdata={setformdata} activeform={activeform} invoice={invoice} setdatafinal={setdatafinal} setRows={setRows} bbbb={rows[index]}  index={index} selectedRow={selectedRow}
+    updateRow={updateRow} />
 
   </div>
 ))}
