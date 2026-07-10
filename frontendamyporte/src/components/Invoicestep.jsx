@@ -30,6 +30,8 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice,se
   // function addRow() {
   //   setRows([...rows, rows.length + 1]);
   // }
+  const [formdata, setformdata] = useState({
+    });
   function addRow() {
   setRows([
     ...rows,
@@ -39,12 +41,15 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice,se
       largeur: "",
       quantite: "",
       prixUnitaire: "",
-      montant: ""
+      montant: "",
+      
+      prixUnitaire:formdata.prixUnitaire,
+      montant:formdata.montant
     }
   ]);
 }
-   const [formdata, setformdata] = useState({
-    });
+console.log("rowwwww",rows)
+   
   
 
     
@@ -240,12 +245,11 @@ function removeRow(index) {
 
     {/* Prix */}
     <div className="text-center text-gray-500">
-      {datafinal.prixUnitaire || "......."}
+      {item.prixUnitaire || "......."}
     </div>
-
     {/* Montant */}
     <div className="text-center text-gray-500">
-      {datafinal.prixtotale || "......."}
+      {item.montant || "......."}
     </div>
 
     {/* Actions */}
@@ -271,7 +275,7 @@ function removeRow(index) {
         <i className="fa-solid fa-gear"></i>
       </button>
     </div>
-                <Popup1 open={open} setOpen={setOpen}  selected={selected} setSelected={setSelected} formdata={formdata} setformdata={setformdata} activeform={activeform} invoice={invoice} setdatafinal={setdatafinal}/>
+                <Popup1 open={open} setOpen={setOpen}  selected={selected} setSelected={setSelected} formdata={formdata} setformdata={setformdata} activeform={activeform} invoice={invoice} setdatafinal={setdatafinal} />
 
   </div>
 ))}
