@@ -133,6 +133,7 @@ export default function FenetreForm({
   setformdata,
   invoice,
   setOpen,
+  setRows
 }) {
   if (!formdata) return null;
 
@@ -156,7 +157,7 @@ export default function FenetreForm({
       factureId: invoice._id,
     };
   console.log("data fen", datafen);
-
+      
     try {
       const response = await costwind(datafen);
 
@@ -170,7 +171,7 @@ export default function FenetreForm({
         prixUnitaire: response.data.prixUnitaire,
         montant: response.data.prixtotale,
       });
-
+      setRows([])
       setOpen(false);
     } catch (error) {
       console.error("❌", error);

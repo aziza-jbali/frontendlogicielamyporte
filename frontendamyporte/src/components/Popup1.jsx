@@ -52,6 +52,7 @@ export default function Popup({
   activeform,
   invoice,
   setdatafinal,
+  setRows,
 }) {
    console.log("activform",activeform)
    console.log("formdata",formdata)
@@ -67,6 +68,7 @@ export default function Popup({
             setformdata={setformdata}
             invoice={invoice}
             setdatafinal={setdatafinal}
+            setRows={setRows}
           />
         )}
 
