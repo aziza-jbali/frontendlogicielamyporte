@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { costwind } from "../../services/apiGestionligne.js";
 
-export default function FenetreForm({ formdata, setformdata, invoice }) {
+export default function FenetreForm({ formdata, setformdata, invoice,setdatafinal }) {
   // console.log("fregardejjj",formdata)
   console.log("this is the invoice twa", invoice);
   console.log("this is the id of invoice", invoice._id);
@@ -31,6 +31,8 @@ export default function FenetreForm({ formdata, setformdata, invoice }) {
     try {
       const response = await costwind(datafen);
       console.log(response);
+      setdatafinal(response.data)
+       console.log("response.data",response.data);
     } catch (error) {
       console.error("❌", error);
     }

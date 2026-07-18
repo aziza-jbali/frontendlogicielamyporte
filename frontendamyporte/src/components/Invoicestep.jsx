@@ -3,12 +3,13 @@ import { useState } from "react";
 import Pagination from "./Pagination";
 import Popup1 from "./Popup1";
 import { frameData } from "framer-motion";
-export default function Invoicestep({setactiveform ,activeform,client,invoice}) {
+export default function Invoicestep({setactiveform ,activeform,client,invoice,setdatafinal,datafinal}) {
   console.log("invoiceyht",invoice)
   console.log('client client',client)
   const [rows, setRows] = useState([1]);
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("");
+  
   console.log("here",selected)
   // console.log("voila le client ",client)
   // console.log("regarderbbbb,",invoice)
@@ -139,9 +140,9 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice}) 
                   onChange={(e)=>{setformdata({...formdata,largeur:e.target.value})}}
                 />
                   <input  value={formdata.quantite } type="number" className="border rounded-full px-3 py-2" onChange={(e)=>setformdata({...formdata,quantite:e.target.value})} />
-                <div className="text-center    text-gray-500">{formdata.prixunitaire }</div>
+                <div className="text-center    text-gray-500"> {datafinal.prixUnitaire || "......." }</div>
 
-                <div className="text-center    text-gray-500">........</div>
+                <div className="text-center    text-gray-500">{datafinal.prixtotale || "......."}</div>
                 <div className="   flex justify-evenly ">
                   {" "}
                   <button >
@@ -161,7 +162,7 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice}) 
                 </div>
               </div>
             ))}
-            <Popup1 open={open} setOpen={setOpen}  selected={selected} setSelected={setSelected} formdata={formdata} setformdata={setformdata} activeform={activeform} invoice={invoice}/>
+            <Popup1 open={open} setOpen={setOpen}  selected={selected} setSelected={setSelected} formdata={formdata} setformdata={setformdata} activeform={activeform} invoice={invoice} setdatafinal={setdatafinal}/>
           </div>
         </div>
       </div>

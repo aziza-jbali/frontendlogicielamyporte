@@ -4,7 +4,7 @@ import PorteAlmForm from "./Productsform/PorteAlmForm";
 import Addclientform from "./Clientform/Addclientform";
 import { XIcon } from "@animateicons/react/lucide";
 
-export default function Popup({ open, setOpen, setSelected, selected ,setclient,formdata ,setformdata,activeform,invoice}) {
+export default function Popup({ open, setOpen, setSelected, selected ,setclient,formdata ,setformdata,activeform,invoice,setdatafinal}) {
   // console.log(open);
   // console.log("activeform",activeform)
   // console.log('mount component22222');
@@ -16,8 +16,8 @@ export default function Popup({ open, setOpen, setSelected, selected ,setclient,
       {open && (
         <div className="fixed  inset-0 bg-black/50 flex justify-center  items-center z-10">
           <div className="bg-[#614c38] p-6 rounded-lg     flex justify-center">
-             {whatactive==="fenetre aluminium" && <FenetreForm  formdata={formdata} setformdata={setformdata} invoice={invoice}/> }
-              {whatactive==="Porte aluminium" && <PorteAlmForm formdata={formdata} setformdata={setformdata} invoice={invoice}/> }
+             {whatactive==="fenetre aluminium" && <FenetreForm  formdata={formdata} setformdata={setformdata} invoice={invoice} setdatafinal={setdatafinal}/> }
+              {whatactive==="Porte aluminium" && <PorteAlmForm formdata={formdata} setformdata={setformdata} invoice={invoice}setdatafinal={setdatafinal}/> }
             {whatactive==="client" && <Addclientform  setclient={setclient}/>  }
             <div
               onClick={() => {
