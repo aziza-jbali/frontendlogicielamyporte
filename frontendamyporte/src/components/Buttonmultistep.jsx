@@ -56,7 +56,7 @@ export default function Buttonmultistep({
 
   return (
     <div>
-      <div className="  flex justify-end gap-10 mt-10 fff">
+      <div className="  flex justify-end gap-10 mt-10    ">
         {Myposition != 1 && (
           <button
             onClick={() => {
@@ -64,7 +64,7 @@ export default function Buttonmultistep({
             }}
             className="px-6 py-3 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-100 transition"
           >
-            <MoveLeftIcon size={20} duration={1} color="#ffffff" className="" />
+            <MoveLeftIcon size={20} duration={1} color="#      " className="" />
           </button>
         )}
 
@@ -75,7 +75,7 @@ export default function Buttonmultistep({
             createinvoice();
           }}
         >
-          <MoveRightIcon size={20} duration={1} color="#ffffff" />
+          <MoveRightIcon size={20} duration={1} color="#      " />
         </button>
       </div>
     </div>

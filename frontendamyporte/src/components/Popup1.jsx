@@ -56,7 +56,8 @@ export default function Popup({
   Target,
    index,
     updateRow,
-    selectedRow
+    selectedRow,
+    setpayant
 }) {
   console.log("hello I WORK1")
   console.log("selectdvbgfygghhg.",selectedRow)
@@ -83,6 +84,7 @@ export default function Popup({
             setdatafinal={setdatafinal}
             setRows={setRows}
             selectedRow={selectedRow}
+            setpayant={setpayant}
           />
         )}
 

@@ -137,7 +137,8 @@ export default function FenetreForm({
   Target,
   index,
   updateRow,
-  selectedRow
+  selectedRow,
+  setpayant
 }) {
     // console.log("FenetreForm mounted");
 
@@ -168,6 +169,7 @@ export default function FenetreForm({
       const response = await costwind(datafen);
       updateRow(selectedRow, "prixUnitaire", response.data.prixUnitaire);
        updateRow(index, "montant", response.data.prixtotale);
+       setpayant(prev => prev+response.data.prixtotale)
       // setformdata({
       //   ...formdata,
 
