@@ -53,14 +53,14 @@ export default function Popup({
   invoice,
   setdatafinal,
   setRows,
-  bbbb,
+  Target,
    index,
     updateRow,
     selectedRow
 }) {
   console.log("hello I WORK1")
   console.log("selectdvbgfygghhg.",selectedRow)
-  console.log("bbbb",bbbb)
+  console.log("Target",Target)
   console.log("open",open)
    console.log("activform",activeform)
    console.log("formdata",formdata)
@@ -76,7 +76,7 @@ export default function Popup({
           <FenetreForm
             formdata={formdata}
             setformdata={setformdata}
-            bbbb={bbbb}
+            Target={Target}
              index={index}
              updateRow={updateRow}
             invoice={invoice}

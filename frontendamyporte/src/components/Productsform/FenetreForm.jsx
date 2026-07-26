@@ -134,7 +134,7 @@ export default function FenetreForm({
   invoice,
   setOpen,
   setRows,
-  bbbb,
+  Target,
   index,
   updateRow,
   selectedRow
@@ -143,22 +143,23 @@ export default function FenetreForm({
 
  console.log("hello I WORK222")
   const [fenetredata, setfenetredata] = useState({
-    choix: bbbb.choix || "",
-    couleur: bbbb.couleur || "",
-    positionFenetre: bbbb.positionFenetre || "",
+    choix: Target.choix || "",
+    couleur: Target.couleur || "",
+    positionFenetre: Target.positionFenetre || "",
+    extension:Target.extension || ""
   });
 
   const handlesubmit = async () => {
     const datafen = {
-      produit: bbbb.produit,
-      largeur: Number(bbbb.largeur),
-      hauteur: Number(bbbb.hauteur),
-      quantite: Number(bbbb.quantite),
+      produit: Target.produit,
+      largeur: Number(Target.largeur),
+      hauteur: Number(Target.hauteur),
+      quantite: Number(Target.quantite),
 
       choix: fenetredata.choix,
       couleur: fenetredata.couleur,
       positionFenetre: fenetredata.positionFenetre,
-
+      extension:fenetredata.extension,
       factureId: invoice._id,
     };
   console.log("data fen", datafen);
@@ -260,6 +261,34 @@ export default function FenetreForm({
             <option value="compas">Compas</option>
           </select>
         </div>
+          <div className="flex flex-col">
+          <label className="mb-2 text-sm font-semibold text-gray-700">
+            Extention:
+          </label>
+
+          <select
+            className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50"
+            value={fenetredata.extension}
+            onChange={(e) =>
+              setfenetredata({
+                ...fenetredata,
+                extension: e.target.value,
+              })
+            }
+          >
+            <option value="">Choisir...</option>
+            {/* <option value="bande fix ">Bande fixe</option> */}
+             <option
+    value="bande fixe"
+    disabled={fenetredata.positionFenetre !== "poignet"}
+  >
+    Bande fixe
+  </option>
+          </select>
+        </div>
+
+
+
       </div>
 
       <div className="flex justify-end gap-4 mt-10">

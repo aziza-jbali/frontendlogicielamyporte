@@ -25,7 +25,8 @@ export default function Invoicestep({setactiveform ,activeform,client,invoice,se
 
   // console.log("here",selected)
   // console.log("voila le client ",client)
-  // console.log("regarderbbbb,",invoice)
+  // console.log("regarder
+  // ,",invoice)
   // console.log("regarderid,",invoice._id)
 
   console.log("hellllllloooobgjhhx225323")
@@ -54,14 +55,7 @@ console.log("rowwwww",rows)
   
 
     
-    // console.log("votre produit",formdata.produit)
-    // console.log("la quantité",formdata.quantite)
-    // console.log("hauteur",formdata.hauteur)
-    // console.log(" largeur",formdata.largeur)
-    // console.log("regarderid,",invoice._id)
-    // console.log(" factureId",formdata.factureId)
-    // console.log("bvfre",formdata.prixunitaire)
-
+ 
 
 function updateRow(index, field, value) {
   const updatedRows = [...rows];
@@ -129,74 +123,7 @@ function removeRow(index) {
               </div>
             </div>
 
-            {/* Row */}
-            {/* {rows.map((item,index) => (
-              <div
-                className="grid grid-cols-7 gap-4 items-center mt-4 "
-                key={index}
-              >
-                <select
-                  className="border rounded-full px-3 py-2 text-sm   "
-                  // value={selected}
-                  value={item["produit"]}
-                  onChange={(e) => {
-                    const newRows = [...rows]; 
-                    newRows[index].produit = e.target.value; 
-                    setRows(newRows);
-                    // setRows([...rows,rows[index].produit:e.target.value])
-                   }}
-
-                >
-                  
-                  <option value="Monobloc">Monobloc</option>
-                  <option value="Porte aluminium">Porte aluminium</option>
-                  
-                  <option value="fenetre aluminium">Fenetre aluminium</option>
-
-                  <option value="ferforgie">Fer forgé</option>
-                  <option value="Rouleauxrideaux">Rouleaux rideaux</option>
-                  <option value="Moustiquaire">Moustiquaire</option>
-                  <option value="Caisson">Caisson</option>
-                </select>
-
-                <input
-                  type="number"
-                  className="border rounded-full px-3 py-2   "
-                  placeholder="cm"
-                  value={formdata.hauteur}
-                  onChange={(e)=>{setformdata({...formdata,hauteur:e.target.value})}}
-                />
-
-                <input
-                  type="number"
-                  className="border rounded-full px-3 py-2   "
-                  placeholder="cm"
-                  value={formdata.largeur}
-                  onChange={(e)=>{setformdata({...formdata,largeur:e.target.value})}}
-                />
-                  <input  value={formdata.quantite } type="number" className="border rounded-full px-3 py-2" onChange={(e)=>setformdata({...formdata,quantite:e.target.value})} />
-                <div className="text-center    text-gray-500"> {datafinal.prixUnitaire || "......." }</div>
-
-                <div className="text-center    text-gray-500">{datafinal.prixtotale || "......."}</div>
-                <div className="   flex justify-evenly ">
-                  {" "}
-                  <button >
-                    <i class="fa-solid fa-trash"></i>
-                  </button>
-                  <button>
-                    {" "}
-                    <i class="fa-solid fa-pen"></i>
-                  </button>
-                  <button onClick={() => {setOpen(!open);
-                      console.log("formaproduit",formdata.produit);
-
-                       setactiveform(formdata.produit)
-                  console.log("produggggg1222");
-                                      
-                  }}><i class="fa-solid fa-gear"></i></button>
-                </div>
-              </div>
-            ))} */}
+           
             {rows.map((item, index) => (
   <div
     key={index}
@@ -279,7 +206,7 @@ function removeRow(index) {
         <i className="fa-solid fa-gear"></i>
       </button>
     </div>
-                <Popup1 open={open} setOpen={setOpen} formdata={formdata} setformdata={setformdata} activeform={activeform} invoice={invoice} setdatafinal={setdatafinal} setRows={setRows} bbbb={rows[index]}  index={index} selectedRow={selectedRow}
+                <Popup1 open={open} setOpen={setOpen} formdata={formdata} setformdata={setformdata} activeform={activeform} invoice={invoice} setdatafinal={setdatafinal} setRows={setRows} Target={rows[index]}  index={index} selectedRow={selectedRow}
     updateRow={updateRow} />
 
   </div>
