@@ -14,8 +14,9 @@ export default function Invoicestep({
   console.log("invoiceyht", invoice);
   console.log("client client", client);
   // const [rows, setRows] = useState([1]);
-  const [payant, setpayant] = useState(0);
+  const [payant, setpayant] = useState(1000000);
   const [typepaiement, settypedepaiment] = useState("");
+  const [acompte,setacompte]=useState(null)
   console.log("payanthhhh", payant);
   const [rows, setRows] = useState([
     {
@@ -76,7 +77,7 @@ export default function Invoicestep({
       <div className="relative overflow-hidden h-70  bg-[#3B2414]        ">
         <div className="absolute w-72 h-72 rounded-full bg-[#6b4224] opacity-90 -top-25 -right-19 "></div>
         <div className=" text-[#ffc186] bg-[#996e47] absolute right-12 rounded-2xl text-sm h-8 top-19 w-26 p-1 text-center border-1 font-bold border-[#ffcea0] ">
-          hello
+          date
           {/* <select
             className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50"
             value={fenetredata.choix}
@@ -237,22 +238,25 @@ export default function Invoicestep({
                 selectedRow={selectedRow}
                 setpayant={setpayant}
                 updateRow={updateRow}
+                typepaiement={typepaiement}
               />
             </div>
           ))}
         </div>
       </div>
-      <div className=" bg-[#3B2414] flex justify-center      w-full rounded-3xl p-5   ">
-        <div className="   shadow-2xl flex flex-col text-[#b39376] font-bold ">
-          <h1>{`Totale :  ${payant}`}</h1>
-          <div className="flex ">
-            <label className="mb-2 text-sm font-bold  ">
+      <div className=" bg-[#3B2414] flex justify-center      w-[90%] rounded-3xl p-5  m-auto mb-4 ">
+        <div className="   shadow-2xl flex flex-col text-[#b39376] font-bold gap-2 ">
+          <h1 className="mb-2">{`Totale :  ${payant}`}</h1>
+          <div className="grid grid-cols-2  gap-2">
+            <h1
+              className="mb-2  font-bold  "
+            >
               type de paiement :
-            </label>
+            </h1>
 
             <select
-              className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50"
-              value={typepaiement }
+              className="  rounded-full border border-gray-300 px-2 py-2 bg-gray-50"
+              value={typepaiement}
               // onChange={(e) =>
               //  settypedepaiment (
               //     (e)=> e.target.value,
@@ -263,11 +267,38 @@ export default function Invoicestep({
               <option value="">Choisir...</option>
               <option value="acompte">Acompte</option>
               <option value="paiement total">Paiement total</option>
-              
             </select>
           </div>
-          {typepaiement && <h1>{`Totale :  ${payant}`}</h1>}
+             {typepaiement==="acompte" && <div className=" flex flex-col"><div className="gap-2  grid grid-cols-2"><h1>L'acompte est : </h1>
+              <input
+                type="number"
+                placeholder="Dinar"
+                className="border bg-white rounded-full px-3 py-2"
+                value={acompte}
+                onChange={(e) => setacompte(e.target.value)}
+              /></div>
+              <h1>{` le Reste est : ${payant -acompte}` }</h1>
+             </div> }
+             
         </div>
+      </div>
+      <div className="bg-white px-5">
+              <div className="grid grid-cols-3 content-between">
+                 <div className=""><h1 className="font-bold mb-1.5">SHOWROOM :</h1>
+                 <h3>Mjez le Beb Deriere Bank BNA</h3>
+                 <h3>165,Rue Khaled Ibn Walid Douar Hicher,Manouba</h3>
+                 <h3>Riadh,ZounefRue Mateur</h3></div>
+                 <div><h1 className="  font-bold mb-1.5">CONTACT :</h1>
+                 <h3>98 588 585</h3>
+                 <h3>98 626 396</h3>
+                 <h3> 51 075 024</h3>
+                 <h3>58 277 351</h3>
+                
+                 </div>
+                 <div className=""><h1 className="font-bold mb-1.5">AMY PORTE INVOICE :</h1>
+                 <h3>Logiciel de facturation est developper par AZIZA JABLI</h3>
+                 </div>
+              </div>
       </div>
     </div>
   );

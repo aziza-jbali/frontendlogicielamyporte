@@ -57,7 +57,7 @@ export default function Clientstep({client,setclient,setactiveform ,activeform})
           <div className="rounded-xl overflow-hidden  absolute top-13 z-10 cursor-pointer">
             {clients
               ? clients.map((client,index) => (
-                  <div className=" bg-amber-50 p-2 fff  " key={client._id}  onClick={()=>{setclient(client);
+                  <div className=" bg-amber-50 p-2     " key={client._id}  onClick={()=>{setclient(client);
                     notification.success(`${client.nom} sélectionné`);
                   }}>
                     {" "}
@@ -70,7 +70,7 @@ export default function Clientstep({client,setclient,setactiveform ,activeform})
               : ""}
           </div>
         </div>
-        {/* <div className=" flex  items-center justify-center fff">
+        {/* <div className=" flex  items-center justify-center   ">
            <UserPlusIcon size={64} duration={1} color="black" /> 
           <i class="fa-solid fa-people-group text-8xl text-orange-900"></i>
 
@@ -81,7 +81,7 @@ export default function Clientstep({client,setclient,setactiveform ,activeform})
           </div>
         </div>
         <div className=" flex items-center justify-center ">
-           <div className="transition-all duration-300 ease-in-out fff hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl" onClick={() => {
+           <div className="transition-all duration-300 ease-in-out    hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl" onClick={() => {
   setOpen(!open);
   setactiveform("client");
                     console.log("produgggggb");
