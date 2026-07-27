@@ -103,11 +103,18 @@ export default function Invoicestep({
             <p>SINCE 1978</p>
           </div>
         </div>
+       <div className="w-[70%] grid grid-cols-2 text-[#ffc186]    m-auto p-3 pt-12">
+          <div className="flex flex-col gap-2"><h1>N° FACTURE :</h1>
+          <h3 className="text-white">heoolo</h3></div>
+          <div className="flex flex-col gap-2"><h1>DATE :</h1>
+          <h3 className="text-white"></h3></div>
+          
+       </div>
       </div>
       {/* <div className="absolute  top-56  md:w-[300px] lg:w-[800px]  w-80       px-3 ">
           <div className="    m-auto  lg:w-[150px]  md:w-[90px] rounded-4xl bg-white p-7 shadow-2xl ">helo</div>
         </div> */}
-      <div className="absolute top-56 w-80 md:w-[300px] lg:w-[900px] px-3 flex justify-center   ">
+      <div className="absolute top-57 w-80 md:w-[300px] lg:w-[900px] px-3 flex justify-center h-25  ">
         <div className=" rounded-3xl bg-white p-4 lg:w-[780px] md:w-[270px] flex justify-between shadow-2xl text-[#b39376] ">
           <div className=" w-1/2 px-2">
             <p>FACTURE A : </p>
@@ -247,9 +254,9 @@ export default function Invoicestep({
       <div className=" bg-[#3B2414] flex justify-center      w-[90%] rounded-3xl p-5  m-auto mb-4 ">
         <div className="   shadow-2xl flex flex-col text-[#b39376] font-bold gap-2 ">
           <h1 className="mb-2">{`Totale :  ${payant}`}</h1>
-          <div className="grid grid-cols-2  gap-2">
+          <div className="grid     grid-cols-2   gap-2 ">
             <h1
-              className="mb-2  font-bold  "
+              className="mb-2  self-center font-bold  "
             >
               type de paiement :
             </h1>
@@ -269,7 +276,7 @@ export default function Invoicestep({
               <option value="paiement total">Paiement total</option>
             </select>
           </div>
-             {typepaiement==="acompte" && <div className=" flex flex-col"><div className="gap-2  grid grid-cols-2"><h1>L'acompte est : </h1>
+             {typepaiement==="acompte" && <div className=" flex flex-col"><div className="gap-2  grid grid-cols-2"><h1 className="self-center">L'acompte est : </h1>
               <input
                 type="number"
                 placeholder="Dinar"
@@ -282,7 +289,7 @@ export default function Invoicestep({
              
         </div>
       </div>
-      <div className="bg-white px-5">
+      {/* <div className="bg-white px-5">
               <div className="grid grid-cols-3 content-between">
                  <div className=""><h1 className="font-bold mb-1.5">SHOWROOM :</h1>
                  <h3>Mjez le Beb Deriere Bank BNA</h3>
@@ -299,7 +306,43 @@ export default function Invoicestep({
                  <h3>Logiciel de facturation est developper par AZIZA JABLI</h3>
                  </div>
               </div>
-      </div>
+      </div> */}
+      <div className="bg-white px-13 py-6 border-t border-gray-100">
+  {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-gray-600"> */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-sm text-gray-600">
+    <div>
+      <h4 className="font-bold text-[#3B2414] mb-2 tracking-wide">
+        SHOWROOM
+      </h4>
+      <address className="not-italic leading-relaxed space-y-0.5">
+        <p>Mjez le Beb, Derrière Bank BNA</p>
+        <p>165, Rue Khaled Ibn Walid, Douar Hicher, Manouba</p>
+        <p>Riadh Zouhour, Rue Mateur</p>
+      </address>
+    </div>
+
+    <div>
+      <h4 className="font-bold text-[#3B2414] mb-2 tracking-wide">
+        CONTACT
+      </h4>
+      <ul className="leading-relaxed space-y-0.5">
+        <li>98 588 585</li>
+        <li>98 626 396</li>
+        <li>51 075 024</li>
+        <li>58 277 351</li>
+      </ul>
+    </div>
+
+   
+  </div>
+   <div className="mt-2">
+     
+      <h1 className="leading-relaxed text-center">
+        Logiciel de facturation développé par Aziza Jabli
+      </h1>
+    </div>
+  
+</div>
     </div>
   );
 }
