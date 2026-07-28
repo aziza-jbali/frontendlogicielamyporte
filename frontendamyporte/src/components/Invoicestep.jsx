@@ -14,7 +14,7 @@ export default function Invoicestep({
   console.log("invoiceyht", invoice);
   console.log("client client", client);
   // const [rows, setRows] = useState([1]);
-  const [payant, setpayant] = useState(1000000);
+  const [payant, setpayant] = useState(0);
   const [typepaiement, settypedepaiment] = useState("");
   const [acompte,setacompte]=useState(null)
   console.log("payanthhhh", payant);
@@ -315,9 +315,10 @@ export default function Invoicestep({
         SHOWROOM
       </h4>
       <address className="not-italic leading-relaxed space-y-0.5">
-        <p>Mjez le Beb, Derrière Bank BNA</p>
-        <p>165, Rue Khaled Ibn Walid, Douar Hicher, Manouba</p>
-        <p>Riadh Zouhour, Rue Mateur</p>
+        <p>*Mjez le Beb, Derrière Bank BNA*</p>
+        <p>*165, Rue Khaled Ibn Walid</p>
+        <p>Douar Hicher, Manouba*</p>
+        <p>*Riadh Zouhour, Rue Mateur*</p>
       </address>
     </div>
 

@@ -3,6 +3,7 @@ import Pagination from '../components/Pagination'
 import Buttonmultistep from '../components/Buttonmultistep'
 import Clientstep from '../components/Clientstep'
 import Invoicestep from '../components/Invoicestep'
+import InvoicePdfstep from '../components/InvoicePdfstep'
 export default function WizardLayout() {
   const [activeform,setactiveform]=useState("")
   const [invoice,setinvoice]=useState({})
@@ -17,6 +18,7 @@ export default function WizardLayout() {
       {/* <Invoicestep/> */}
       {Myposition  ===1  &&(<Clientstep client={client} setclient={setclient} setactiveform={setactiveform} activeform={activeform}/>)}
       {Myposition  ===2  &&(<Invoicestep setactiveform={setactiveform} activeform={activeform}  client={client} invoice={invoice}  setdatafinal={setdatafinal} datafinal={datafinal}/>)}
+      {Myposition ===3 && (<InvoicePdfstep/>)}
       <Buttonmultistep Myposition={Myposition} setMyposition={setMyposition} client={client} invoice={invoice} setinvoice={setinvoice} />
     </div>
   )
