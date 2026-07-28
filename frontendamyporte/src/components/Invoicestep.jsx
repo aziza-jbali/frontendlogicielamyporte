@@ -105,9 +105,9 @@ export default function Invoicestep({
         </div>
        <div className="w-[70%] grid grid-cols-2 text-[#ffc186]    m-auto p-3 pt-12">
           <div className="flex flex-col gap-2"><h1>N° FACTURE :</h1>
-          <h3 className="text-white">heoolo</h3></div>
+          <h3 className="text-white">{invoice.invoiceNumber || " "}</h3></div>
           <div className="flex flex-col gap-2"><h1>DATE :</h1>
-          <h3 className="text-white"></h3></div>
+          <h3 className="text-white">{invoice.date.split("T")[0] || " "}</h3></div>
           
        </div>
       </div>
