@@ -18,7 +18,7 @@ export default function WizardLayout() {
       {/* <Invoicestep/> */}
       {Myposition  ===1  &&(<Clientstep client={client} setclient={setclient} setactiveform={setactiveform} activeform={activeform}/>)}
       {Myposition  ===2  &&(<Invoicestep setactiveform={setactiveform} activeform={activeform}  client={client} invoice={invoice}  setdatafinal={setdatafinal} datafinal={datafinal}/>)}
-      {Myposition ===3 && (<InvoicePdfstep/>)}
+      {Myposition ===3 && (<InvoicePdfstep invoice={invoice}/>)}
       <Buttonmultistep Myposition={Myposition} setMyposition={setMyposition} client={client} invoice={invoice} setinvoice={setinvoice} />
     </div>
   )

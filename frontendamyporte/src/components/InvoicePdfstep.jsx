@@ -1,6 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import{getalllignesoffacture} from  "../services/apiGestioninvoice.js"
-export default function InvoicePdfstep() {
+ import { notification } from "./toastService.js";
+
+import { Bell, Rocket, User, DoorOpen, Library, LogOut } from "lucide-react";
+
+export default function InvoicePdfstep({invoice}) {
+  const[datainvoice,setdatainvoice]=useState([])
+    useEffect(() => {
+    const fetchinvoice = async () => {
+      const idfa=invoice._id
+      console.log("I work do not worry")
+      try {
+        const response = await getalllignesoffacture(idfa);
+        console.log(response);
+        const newarray = response.data
+        // console.log(newarray);
+        setdatainvoice(newarray);
+        // console.log("i am working");
+      } catch (error) {
+        console.error("❌ Erreur lors de la récupération de facture :", error);
+        notification.error("Impossible de charger la facture demandé.");
+
+      }
+    };
+    fetchinvoice();
+  }, []);
   return (
      <div className="w-80 relative bg-white   md:w-[300px] lg:w-[900px]       rounded-3xl  overflow-hidden   ">
       <div className="relative overflow-hidden h-70  bg-[#3B2414]        ">
