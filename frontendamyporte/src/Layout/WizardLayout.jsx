@@ -9,6 +9,7 @@ export default function WizardLayout() {
   const [invoice,setinvoice]=useState({})
   const [client,setclient]=useState({});
   const [datafinal,setdatafinal]=useState({})
+  const [datapaiment,setdatapaiment]=useState({})
   console.log("voila le client",client)
   const [Myposition,setMyposition]=useState(1)
   
@@ -18,9 +19,9 @@ export default function WizardLayout() {
       {/* <Clientstep/> */}
       {/* <Invoicestep/> */}
       {Myposition  ===1  &&(<Clientstep client={client} setclient={setclient} setactiveform={setactiveform} activeform={activeform}/>)}
-      {Myposition  ===2  &&(<Invoicestep setactiveform={setactiveform} activeform={activeform}  client={client} invoice={invoice}  setdatafinal={setdatafinal} datafinal={datafinal}/>)}
+      {Myposition  ===2  &&(<Invoicestep setactiveform={setactiveform} activeform={activeform} setdatapaiment={setdatapaiment} client={client} invoice={invoice}  setdatafinal={setdatafinal} datafinal={datafinal}/>)}
       {Myposition ===3 && (<InvoicePdfstep invoice={invoice}/>)}
-      <Buttonmultistep Myposition={Myposition} setMyposition={setMyposition} client={client} invoice={invoice} setinvoice={setinvoice} />
+      <Buttonmultistep Myposition={Myposition} setMyposition={setMyposition} client={client} invoice={invoice} setinvoice={setinvoice} datapaiment={datapaiment} />
     </div>
   )
 }

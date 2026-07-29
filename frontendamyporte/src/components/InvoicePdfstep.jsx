@@ -4,9 +4,10 @@ import{getalllignesoffacture} from  "../services/apiGestioninvoice.js"
 
 import { Bell, Rocket, User, DoorOpen, Library, LogOut } from "lucide-react";
 
-export default function InvoicePdfstep({invoice}) {
+export default function InvoicePdfstep({invoice,datapaiment}) {
   const[datainvoice,setdatainvoice]=useState([])
   console.log("ddd1477",datainvoice)
+  console.log("datapaiment",datapaiment);
     useEffect(() => {
     const fetchinvoice = async () => {
       const idfa=invoice._id
@@ -59,9 +60,9 @@ export default function InvoicePdfstep({invoice}) {
         </div>
        <div className="w-[70%] grid grid-cols-2 text-[#ffc186]    m-auto p-3 pt-12">
           <div className="flex flex-col gap-2"><h1>N° FACTURE :</h1>
-          <h3 className="text-white">heoolo</h3></div>
+          <h3 className="text-white">{invoice.invoiceNumber || " "}</h3></div>
           <div className="flex flex-col gap-2"><h1>DATE :</h1>
-          <h3 className="text-white"></h3></div>
+          <h3 className="text-white">{invoice.date?.split("T")[0]}</h3></div>
           
        </div>
       </div>
@@ -150,12 +151,12 @@ export default function InvoicePdfstep({invoice}) {
               /> */}
                {/* description */}
                <div className="text-center text-gray-500">
-                {item.designation|| "........"}
+                {item.quantite|| "........"}
               </div>
                 {/* Quantité */}
 
               <div className="text-center text-gray-500">
-                {item.quantite || "........"}
+                {item.designation || "........"}
               </div>
               {/* Prix */}
               <div className="text-center text-gray-500">
@@ -167,31 +168,7 @@ export default function InvoicePdfstep({invoice}) {
               </div>
 
               {/* Actions */}
-              <div className="flex justify-evenly">
-                {/* <button onClick={() => removeRow(index)}>
-                  <i className="fa-solid fa-trash"></i>
-                </button> */}
-
-                <button>
-                  <i className="fa-solid fa-pen"></i>
-                </button>
-
-                {/* <button
-                  onClick={() => {
-                    setOpen(true);
-                    setactiveform(item.produit);
-                    setSelectedRow(index);
-                    console.log("selectedRow", selectedRow);
-                    let a = index;
-                    console.log("aaaa", a);
-                    // console.log("item",item);
-                    console.log("ahwa", rows[index]);
-                    setformdata(rows[selectedRow]);
-                  }}
-                >
-                  <i className="fa-solid fa-gear"></i>
-                </button> */}
-              </div>
+              
               {/* <Popup1
                 open={open}
                 setOpen={setOpen}

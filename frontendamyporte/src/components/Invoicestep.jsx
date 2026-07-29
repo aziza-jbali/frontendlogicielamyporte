@@ -11,6 +11,7 @@ export default function Invoicestep({
   invoice,
   setdatafinal,
   datafinal,
+  setdatapaiment
 }) {
   console.log("invoiceyht", invoice);
 
@@ -20,6 +21,7 @@ export default function Invoicestep({
   const [typepaiement, settypedepaiment] = useState("");
   const [acompte, setacompte] = useState(null);
   console.log("payanthhhh", payant);
+  console.log("typepaiement",typepaiement)
   const [rows, setRows] = useState([
     {
       produit: "",
@@ -71,16 +73,20 @@ export default function Invoicestep({
   }
  
  async function savePayment() {
-
+   let rest =0
+   if(acompte){
+    rest=payant-acompte
+   }
   const datap = {
     factureId: invoice._id || "",
     typepaiement:typepaiement || "" ,
-    reste:payant - acompte || 0,
+    reste:rest,
     montantapayer: payant || 0
   };
 
   try {
     const response = await pay(datap);
+    setdatapaiment(datap)
  console.log("gytfrhfjfvjgv123")
     console.log(response);
 
@@ -300,7 +306,7 @@ export default function Invoicestep({
             >
               <option value="">Choisir...</option>
               <option value="acompte">Acompte</option>
-              <option value="paiement total">Paiement total</option>
+              <option value="totale">Paiement total</option>
             </select>
           </div>
           {typepaiement === "acompte" && (
