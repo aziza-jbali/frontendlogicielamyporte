@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import{getalllignesoffacture} from  "../services/apiGestioninvoice.js"
  import { notification } from "./toastService.js";
 
@@ -6,6 +6,7 @@ import { Bell, Rocket, User, DoorOpen, Library, LogOut } from "lucide-react";
 
 export default function InvoicePdfstep({invoice}) {
   const[datainvoice,setdatainvoice]=useState([])
+  console.log("ddd1477",datainvoice)
     useEffect(() => {
     const fetchinvoice = async () => {
       const idfa=invoice._id
@@ -71,44 +72,43 @@ export default function InvoicePdfstep({invoice}) {
         <div className=" rounded-3xl bg-white p-4 lg:w-[780px] md:w-[270px] flex justify-between shadow-2xl text-[#b39376] ">
           <div className=" w-1/2 px-2">
             <p>FACTURE A : </p>
-            <p className="font-bold text-xl text-black">{client.nom}</p>
+            <p className="font-bold text-xl text-black"></p>
           </div>
           <div className=" w-1/2 px-2  ">
             <p className="">Contact :</p>
-            <p className="font-bold text-xl text-black"> {client.numero}</p>
+            <p className="font-bold text-xl text-black"> </p>
           </div>
         </div>
       </div>
       <div className="mt-15 flex justify-center    ">
         <div className="w-full max-w-4xl  p-4 rounded-xl">
           {/* Header */}
-          <div className="grid grid-cols-7 font-bold text-center  pb-3">
-            <h1 className="  ">Produit</h1>
-            <h1 className="  ">Hauteur</h1>
-            <h1 className="  ">Largeur</h1>
-            <h1>Quantité</h1>
+          <div className="grid grid-cols-4 font-bold text-center  pb-3">
+            <h1 className="  ">Quantité</h1>
+            <h1 className="  ">Description</h1>
+          
             <h1 className="  ">P.Unitaire</h1>
 
-            <h1 className="  ">Montant</h1>
+            <h1 className="  "> Total</h1>
             <div className="  ">
-              <button
+              {/* <button
                 onClick={() => {
                   addRow();
                 }}
               >
                 {" "}
                 <i class="fa-solid fa-square-plus"></i>
-              </button>
+              </button> */}
             </div>
           </div>
 
-          {rows.map((item, index) => (
+          {datainvoice.map((item, index) => (
             <div
               key={index}
-              className="grid grid-cols-7 gap-4 items-center mt-4"
+              className="grid grid-cols-4 gap-4 items-center mt-4"
             >
               {/* Produit */}
-              <select
+              {/* <select
                 className="border rounded-full px-3 py-2 text-sm"
                 value={item.produit}
                 onChange={(e) => updateRow(index, "produit", e.target.value)}
@@ -121,54 +121,62 @@ export default function InvoicePdfstep({invoice}) {
                 <option value="Rouleaux rideaux">Rouleaux rideaux</option>
                 <option value="Moustiquaire">Moustiquaire</option>
                 <option value="Caisson">Caisson</option>
-              </select>
+              </select> */}
 
               {/* Hauteur */}
-              <input
+              {/* <input
                 type="number"
                 placeholder="cm"
                 className="border rounded-full px-3 py-2"
                 value={item.hauteur}
                 onChange={(e) => updateRow(index, "hauteur", e.target.value)}
-              />
+              /> */}
 
               {/* Largeur */}
-              <input
+              {/* <input
                 type="number"
                 placeholder="cm"
                 className="border rounded-full px-3 py-2"
                 value={item.largeur}
                 onChange={(e) => updateRow(index, "largeur", e.target.value)}
-              />
+              /> */}
 
               {/* Quantité */}
-              <input
+              {/* <input
                 type="number"
                 className="border rounded-full px-3 py-2"
                 value={item.quantite}
                 onChange={(e) => updateRow(index, "quantite", e.target.value)}
-              />
+              /> */}
+               {/* description */}
+               <div className="text-center text-gray-500">
+                {item.designation|| "........"}
+              </div>
+                {/* Quantité */}
 
+              <div className="text-center text-gray-500">
+                {item.quantite || "........"}
+              </div>
               {/* Prix */}
               <div className="text-center text-gray-500">
-                {item.prixUnitaire || "......."}
+                {item.unitPrice|| "......."}
               </div>
               {/* Montant */}
               <div className="text-center text-gray-500">
-                {item.montant || "........"}
+                {item.totalLine || "........"}
               </div>
 
               {/* Actions */}
               <div className="flex justify-evenly">
-                <button onClick={() => removeRow(index)}>
+                {/* <button onClick={() => removeRow(index)}>
                   <i className="fa-solid fa-trash"></i>
-                </button>
+                </button> */}
 
                 <button>
                   <i className="fa-solid fa-pen"></i>
                 </button>
 
-                <button
+                {/* <button
                   onClick={() => {
                     setOpen(true);
                     setactiveform(item.produit);
@@ -182,9 +190,9 @@ export default function InvoicePdfstep({invoice}) {
                   }}
                 >
                   <i className="fa-solid fa-gear"></i>
-                </button>
+                </button> */}
               </div>
-              <Popup1
+              {/* <Popup1
                 open={open}
                 setOpen={setOpen}
                 formdata={formdata}
@@ -199,21 +207,21 @@ export default function InvoicePdfstep({invoice}) {
                 setpayant={setpayant}
                 updateRow={updateRow}
                 typepaiement={typepaiement}
-              />
+              /> */}
             </div>
           ))}
         </div>
       </div>
       <div className=" bg-[#3B2414] flex justify-center      w-[90%] rounded-3xl p-5  m-auto mb-4 ">
         <div className="   shadow-2xl flex flex-col text-[#b39376] font-bold gap-2 ">
-          <h1 className="mb-2">{`Totale :  ${payant}`}</h1>
+          {/* <h1 className="mb-2">{`Totale :  ${}`}</h1> */}
           <div className="grid     grid-cols-2   gap-2 ">
             <h1
               className="mb-2  self-center font-bold  "
             >
               type de paiement :
             </h1>
-
+{/* 
             <select
               className="  rounded-full border border-gray-300 px-2 py-2 bg-gray-50"
               value={typepaiement}
@@ -223,13 +231,13 @@ export default function InvoicePdfstep({invoice}) {
               //   )
               // }
               onChange={(e) => settypedepaiment(e.target.value)}
-            >
+            > 
               <option value="">Choisir...</option>
               <option value="acompte">Acompte</option>
               <option value="paiement total">Paiement total</option>
-            </select>
+            </select>*/}
           </div>
-             {typepaiement==="acompte" && <div className=" flex flex-col"><div className="gap-2  grid grid-cols-2"><h1 className="self-center">L'acompte est : </h1>
+             {/* {typepaiement==="acompte" && <div className=" flex flex-col"><div className="gap-2  grid grid-cols-2"><h1 className="self-center">L'acompte est : </h1>
               <input
                 type="number"
                 placeholder="Dinar"
@@ -238,7 +246,7 @@ export default function InvoicePdfstep({invoice}) {
                 onChange={(e) => setacompte(e.target.value)}
               /></div>
               <h1>{` le Reste est : ${payant -acompte}` }</h1>
-             </div> }
+             </div> } */}
              
         </div>
       </div>

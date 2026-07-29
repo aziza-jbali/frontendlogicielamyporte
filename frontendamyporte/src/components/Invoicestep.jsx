@@ -3,6 +3,7 @@ import { useState } from "react";
 import Pagination from "./Pagination";
 import Popup1 from "./Popup1";
 import { frameData } from "framer-motion";
+import { pay } from "../services/apipaiement.js";
 export default function Invoicestep({
   setactiveform,
   activeform,
@@ -12,11 +13,12 @@ export default function Invoicestep({
   datafinal,
 }) {
   console.log("invoiceyht", invoice);
+
   console.log("client client", client);
   // const [rows, setRows] = useState([1]);
   const [payant, setpayant] = useState(0);
   const [typepaiement, settypedepaiment] = useState("");
-  const [acompte,setacompte]=useState(null)
+  const [acompte, setacompte] = useState(null);
   console.log("payanthhhh", payant);
   const [rows, setRows] = useState([
     {
@@ -67,7 +69,25 @@ export default function Invoicestep({
     updatedRows[index][field] = value;
     setRows(updatedRows);
   }
+ 
+ async function savePayment() {
 
+  const datap = {
+    factureId: invoice._id || "",
+    typepaiement:typepaiement || "" ,
+    reste:payant - acompte || 0,
+    montantapayer: payant || 0
+  };
+
+  try {
+    const response = await pay(datap);
+ console.log("gytfrhfjfvjgv123")
+    console.log(response);
+
+  } catch (error) {
+    console.log(error);
+  }
+}
   function removeRow(index) {
     setRows(rows.filter((_, i) => i !== index));
   }
@@ -103,13 +123,22 @@ export default function Invoicestep({
             <p>SINCE 1978</p>
           </div>
         </div>
-       <div className="w-[70%] grid grid-cols-2 text-[#ffc186]    m-auto p-3 pt-12">
-          <div className="flex flex-col gap-2"><h1>N° FACTURE :</h1>
-          <h3 className="text-white">{invoice.invoiceNumber || " "}</h3></div>
-          <div className="flex flex-col gap-2"><h1>DATE :</h1>
-          <h3 className="text-white">{invoice.date.split("T")[0] || " "}</h3></div>
-          
-       </div>
+        <div className="w-[70%] grid grid-cols-2 text-[#ffc186]    m-auto p-3 pt-12">
+          <div className="flex flex-col gap-2">
+            <h1>N° FACTURE :</h1>
+            <h3 className="text-white">{invoice.invoiceNumber || " "}</h3>
+          </div>
+          <div className="flex flex-col gap-2">
+            <h1>DATE :</h1>
+            {/* <h3 className="text-white">{invoice.date.split("T")[0] || " "}</h3> */}
+            <h3 className="text-white">{invoice.date?.split("T")[0]}</h3>
+
+            <h3 className="text-white">
+              {console.log("invoice.date =", invoice.date)}
+              {/* {invoice.date?.split("T")[0]} */}
+            </h3>
+          </div>
+        </div>
       </div>
       {/* <div className="absolute  top-56  md:w-[300px] lg:w-[800px]  w-80       px-3 ">
           <div className="    m-auto  lg:w-[150px]  md:w-[90px] rounded-4xl bg-white p-7 shadow-2xl ">helo</div>
@@ -255,9 +284,7 @@ export default function Invoicestep({
         <div className="   shadow-2xl flex flex-col text-[#b39376] font-bold gap-2 ">
           <h1 className="mb-2">{`Totale :  ${payant}`}</h1>
           <div className="grid     grid-cols-2   gap-2 ">
-            <h1
-              className="mb-2  self-center font-bold  "
-            >
+            <h1 className="mb-2  self-center font-bold  ">
               type de paiement :
             </h1>
 
@@ -276,17 +303,21 @@ export default function Invoicestep({
               <option value="paiement total">Paiement total</option>
             </select>
           </div>
-             {typepaiement==="acompte" && <div className=" flex flex-col"><div className="gap-2  grid grid-cols-2"><h1 className="self-center">L'acompte est : </h1>
-              <input
-                type="number"
-                placeholder="Dinar"
-                className="border bg-white rounded-full px-3 py-2"
-                value={acompte}
-                onChange={(e) => setacompte(e.target.value)}
-              /></div>
-              <h1>{` le Reste est : ${payant -acompte}` }</h1>
-             </div> }
-             
+          {typepaiement === "acompte" && (
+            <div className=" flex flex-col">
+              <div className="gap-2  grid grid-cols-2">
+                <h1 className="self-center">L'acompte est : </h1>
+                <input
+                  type="number"
+                  placeholder="Dinar"
+                  className="border bg-white rounded-full px-3 py-2"
+                  value={acompte}
+                  onChange={(e) => setacompte(e.target.value)}
+                />
+              </div>
+              <h1>{` le Reste est : ${payant - acompte}`}</h1>
+            </div>
+          )}
         </div>
       </div>
       {/* <div className="bg-white px-5">
@@ -308,42 +339,46 @@ export default function Invoicestep({
               </div>
       </div> */}
       <div className="bg-white px-13 py-6 border-t border-gray-100">
-  {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-gray-600"> */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-sm text-gray-600">
-    <div>
-      <h4 className="font-bold text-[#3B2414] mb-2 tracking-wide">
-        SHOWROOM
-      </h4>
-      <address className="not-italic leading-relaxed space-y-0.5">
-        <p>*Mjez le Beb, Derrière Bank BNA*</p>
-        <p>*165, Rue Khaled Ibn Walid</p>
-        <p>Douar Hicher, Manouba*</p>
-        <p>*Riadh Zouhour, Rue Mateur*</p>
-      </address>
-    </div>
+        {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-gray-600"> */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-sm text-gray-600">
+          <div>
+            <h4 className="font-bold text-[#3B2414] mb-2 tracking-wide">
+              SHOWROOM
+            </h4>
+            <address className="not-italic leading-relaxed space-y-0.5">
+              <p>*Mjez le Beb, Derrière Bank BNA*</p>
+              <p>*165, Rue Khaled Ibn Walid</p>
+              <p>Douar Hicher, Manouba*</p>
+              <p>*Riadh Zouhour, Rue Mateur*</p>
+            </address>
+          </div>
 
-    <div>
-      <h4 className="font-bold text-[#3B2414] mb-2 tracking-wide">
-        CONTACT
-      </h4>
-      <ul className="leading-relaxed space-y-0.5">
-        <li>98 588 585</li>
-        <li>98 626 396</li>
-        <li>51 075 024</li>
-        <li>58 277 351</li>
-      </ul>
-    </div>
+          <div>
+            <h4 className="font-bold text-[#3B2414] mb-2 tracking-wide">
+              CONTACT
+            </h4>
+            <ul className="leading-relaxed space-y-0.5">
+              <li>98 588 585</li>
+              <li>98 626 396</li>
+              <li>51 075 024</li>
+              <li>58 277 351</li>
+            </ul>
+          </div>
+        </div>
+        <div className="transition-all duration-300 ease-in-out    hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl">
+          {" "}
+          <button onClick={() => {savePayment()}}>
+            Enregistrer la facture
+            <i class="fa-solid fa-floppy-disk"></i>
+          </button>
+        </div>
 
-   
-  </div>
-   <div className="mt-2">
-     
-      <h1 className="leading-relaxed text-center">
-        Logiciel de facturation développé par Aziza Jabli
-      </h1>
-    </div>
-  
-</div>
+        <div className="mt-2">
+          <h1 className="leading-relaxed text-center">
+            Logiciel de facturation développé par Aziza Jabli
+          </h1>
+        </div>
+      </div>
     </div>
   );
 }

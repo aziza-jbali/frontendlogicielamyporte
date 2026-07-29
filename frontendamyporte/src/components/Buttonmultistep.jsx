@@ -71,8 +71,9 @@ export default function Buttonmultistep({
         <button
           className="px-6 py-3 rounded-xl bg-[#614c38] text-white hover:bg-[#4f3d2f] transition "
           onClick={() => {
-            setMyposition(Myposition + 1);
+           
             createinvoice();
+            setMyposition(Myposition + 1);
           }}
         >
           <MoveRightIcon size={20} duration={1} color="#      " />

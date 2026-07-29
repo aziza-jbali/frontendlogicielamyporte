@@ -11,6 +11,7 @@ export default function WizardLayout() {
   const [datafinal,setdatafinal]=useState({})
   console.log("voila le client",client)
   const [Myposition,setMyposition]=useState(1)
+  
   return (
     <div className='flex flex-col  min-h-screen  items-center justify-center    bg-linear-to-b from-[#faf6ef] to-[#f0e5d2]  gap-2'>
       <Pagination/>
