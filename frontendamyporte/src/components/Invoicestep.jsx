@@ -153,11 +153,11 @@ export default function Invoicestep({
         <div className=" rounded-3xl bg-white p-4 lg:w-[780px] md:w-[270px] flex justify-between shadow-2xl text-[#b39376] ">
           <div className=" w-1/2 px-2">
             <p>FACTURE A : </p>
-            <p className="font-bold text-xl text-black">{client.nom}</p>
+            <p className="font-bold text-xl text-black">{client.nom || " "}</p>
           </div>
           <div className=" w-1/2 px-2  ">
-            <p className="">Contact :</p>
-            <p className="font-bold text-xl text-black"> {client.numero}</p>
+            <p className="">CONTACT :</p>
+            <p className="font-bold text-xl text-black"> {client.numero || ""}</p>
           </div>
         </div>
       </div>
@@ -346,7 +346,7 @@ export default function Invoicestep({
       </div> */}
       <div className="bg-white px-13 py-6 border-t border-gray-100">
         {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-gray-600"> */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-sm text-gray-600">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-sm text-gray-600 mb-7">
           <div>
             <h4 className="font-bold text-[#3B2414] mb-2 tracking-wide">
               SHOWROOM
@@ -371,11 +371,12 @@ export default function Invoicestep({
             </ul>
           </div>
         </div>
-        <div className="transition-all duration-300 ease-in-out    hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl">
+        <div className="transition-all  duration-300 ease-in-out text-center w-[50%] m-auto hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl">
           {" "}
-          <button onClick={() => {savePayment()}}>
+                      <i class="fa-solid fa-floppy-disk"></i>
+
+          <button  className=" ml-2" onClick={() => {savePayment()}}>
             Enregistrer la facture
-            <i class="fa-solid fa-floppy-disk"></i>
           </button>
         </div>
 

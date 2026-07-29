@@ -4,7 +4,7 @@ import{getalllignesoffacture} from  "../services/apiGestioninvoice.js"
 
 import { Bell, Rocket, User, DoorOpen, Library, LogOut } from "lucide-react";
 
-export default function InvoicePdfstep({invoice,datapaiment}) {
+export default function InvoicePdfstep({invoice,datapaiment,client}) {
   const[datainvoice,setdatainvoice]=useState([])
   console.log("ddd1477",datainvoice)
   console.log("datapaiment",datapaiment);
@@ -73,11 +73,11 @@ export default function InvoicePdfstep({invoice,datapaiment}) {
         <div className=" rounded-3xl bg-white p-4 lg:w-[780px] md:w-[270px] flex justify-between shadow-2xl text-[#b39376] ">
           <div className=" w-1/2 px-2">
             <p>FACTURE A : </p>
-            <p className="font-bold text-xl text-black"></p>
+            <p className="font-bold text-xl text-black">{client.nom || ""}</p>
           </div>
           <div className=" w-1/2 px-2  ">
-            <p className="">Contact :</p>
-            <p className="font-bold text-xl text-black"> </p>
+            <p className="">CONTACT :</p>
+            <p className="font-bold text-xl text-black">{client.numero || ""} </p>
           </div>
         </div>
       </div>
@@ -198,6 +198,7 @@ export default function InvoicePdfstep({invoice,datapaiment}) {
             >
               type de paiement :
             </h1>
+            <h1>{datapaiment.typepaiement || ""}</h1>
 {/* 
             <select
               className="  rounded-full border border-gray-300 px-2 py-2 bg-gray-50"
@@ -214,6 +215,14 @@ export default function InvoicePdfstep({invoice,datapaiment}) {
               <option value="paiement total">Paiement total</option>
             </select>*/}
           </div>
+           <div className="grid     grid-cols-2   gap-2 ">
+            <h1
+              className="mb-2  self-center font-bold  "
+            >
+               :
+            </h1>
+            <h1>{datapaiment.typepaiement || ""}</h1>
+            </div>
              {/* {typepaiement==="acompte" && <div className=" flex flex-col"><div className="gap-2  grid grid-cols-2"><h1 className="self-center">L'acompte est : </h1>
               <input
                 type="number"

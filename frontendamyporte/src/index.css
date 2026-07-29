@@ -1,5 +1,39 @@
 /* fffffffff */
+@import url('https://fonts.googleapis.com/css2?family=Birthstone&display=swap');
+
 @import "tailwindcss";
 .fff{
     border: 1px red solid ;
+}
+/* .birthstone-regular {
+  font-family: "Birthstone", cursive;
+  font-weight: 400;
+  font-style: normal;
+} */
+/* body{
+  font-family: "Birthstone", cursive;
+   font-weight: 400;
+   
+   
+  font-style: normal;
+} */
+
+/* .yesteryear-regular {
+  font-family: "Yesteryear", cursive;
+  font-weight: 400;
+  font-style: normal;
+} */
+/* body {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-weight: 700;
+} */
+body {
+    /* font-family: 'Great Vibes', cursive; */
+  /* font-family: 'Allura', cursive; */
+    font-family: 'Parisienne', cursive;
+
+
+  font-style: italic;
+  font-weight: 700;
 }
