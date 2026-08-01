@@ -259,7 +259,13 @@ export default function FenetreForm({
           >
             <option value="">Choisir...</option>
             <option value="poignet">Poignet</option>
-            <option value="collision">Collision</option>
+            {/* <option value="collision">Collision</option> */}
+              {/* {(Target.hauteur > 80 && Target.largeur > 80) && (
+    <option value="collision">Collision</option>
+  )} */}
+{Target.hauteur >= 60 &&  (
+   <option value="collision">Collision</option>
+)}
             <option value="compas">Compas</option>
           </select>
         </div>

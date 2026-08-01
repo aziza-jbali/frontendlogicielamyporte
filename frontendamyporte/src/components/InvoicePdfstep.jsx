@@ -189,71 +189,73 @@ export default function InvoicePdfstep({invoice,datapaiment,client}) {
           ))}
         </div>
       </div>
-      <div className=" bg-[#3B2414] flex justify-center      w-[90%] rounded-3xl p-5  m-auto mb-4 ">
+      {/* <div className=" bg-[#3B2414] flex justify-center      w-[90%] rounded-3xl p-5  m-auto mb-4 ">
         <div className="   shadow-2xl flex flex-col text-[#b39376] font-bold gap-2 ">
-          {/* <h1 className="mb-2">{`Totale :  ${}`}</h1> */}
-          <div className="grid     grid-cols-2   gap-2 ">
+          <div className="grid     grid-cols-2    ">
             <h1
               className="mb-2  self-center font-bold  "
             >
               type de paiement :
             </h1>
             <h1>{datapaiment.typepaiement || ""}</h1>
-{/* 
-            <select
-              className="  rounded-full border border-gray-300 px-2 py-2 bg-gray-50"
-              value={typepaiement}
-              // onChange={(e) =>
-              //  settypedepaiment (
-              //     (e)=> e.target.value,
-              //   )
-              // }
-              onChange={(e) => settypedepaiment(e.target.value)}
-            > 
-              <option value="">Choisir...</option>
-              <option value="acompte">Acompte</option>
-              <option value="paiement total">Paiement total</option>
-            </select>*/}
+
           </div>
-           <div className="grid     grid-cols-2   gap-2 ">
+           {datapaiment.typepaiement ==="acompte" && <div className="grid     grid-cols-2   ">
             <h1
               className="mb-2  self-center font-bold  "
             >
-               :
+               {`L'Acompte: ${datapaiment.montantapayer - datapaiment.reste}` } 
             </h1>
-            <h1>{datapaiment.typepaiement || ""}</h1>
-            </div>
-             {/* {typepaiement==="acompte" && <div className=" flex flex-col"><div className="gap-2  grid grid-cols-2"><h1 className="self-center">L'acompte est : </h1>
-              <input
-                type="number"
-                placeholder="Dinar"
-                className="border bg-white rounded-full px-3 py-2"
-                value={acompte}
-                onChange={(e) => setacompte(e.target.value)}
-              /></div>
-              <h1>{` le Reste est : ${payant -acompte}` }</h1>
-             </div> } */}
+            <h1>{`la reste: ${ datapaiment.reste} `} </h1>
+            </div>}
+             <div className="grid     grid-cols-2   gap-2 ">
+            <h1
+              className="mb-2  self-center font-bold  "
+            >
+              Montant a payer :
+            </h1>
+            <h1>{datapaiment.montantapayer || ""}</h1>
+
+          </div>
+            
+         
              
         </div>
-      </div>
-      {/* <div className="bg-white px-5">
-              <div className="grid grid-cols-3 content-between">
-                 <div className=""><h1 className="font-bold mb-1.5">SHOWROOM :</h1>
-                 <h3>Mjez le Beb Deriere Bank BNA</h3>
-                 <h3>165,Rue Khaled Ibn Walid Douar Hicher,Manouba</h3>
-                 <h3>Riadh,ZounefRue Mateur</h3></div>
-                 <div><h1 className="  font-bold mb-1.5">CONTACT :</h1>
-                 <h3>98 588 585</h3>
-                 <h3>98 626 396</h3>
-                 <h3> 51 075 024</h3>
-                 <h3>58 277 351</h3>
-                
-                 </div>
-                 <div className=""><h1 className="font-bold mb-1.5">AMY PORTE INVOICE :</h1>
-                 <h3>Logiciel de facturation est developper par AZIZA JABLI</h3>
-                 </div>
-              </div>
       </div> */}
+
+
+      
+      <div className="w-[90%] mx-auto mb-4 rounded-3xl bg-[#3B2414] p-6 shadow-xl">
+  <div className="space-y-4 text-[#d2b49c]">
+
+    <div className="grid grid-cols-2 border-b border-[#6b4a35] pb-3">
+      <span className="font-bold">Type de paiement :</span>
+      <span className="text-right font-bold text-xl ">{datapaiment.typepaiement || "-"}</span>
+    </div>
+
+    {datapaiment.typepaiement === "acompte" && (
+      <div className="grid grid-cols-2 gap-y-2 border-b border-[#6b4a35] pb-3">
+        <span className="font-bold ">Acompte :</span>
+        <span className="text-right">
+          {datapaiment.montantapayer - datapaiment.reste} DT
+        </span>
+
+        <span className="font-bold">Reste :</span>
+        <span className="text-right">
+          {datapaiment.reste} DT
+        </span>
+      </div>
+    )}
+
+    <div className="grid grid-cols-2">
+      <span className="font-bold text-lg">Montant à payer :</span>
+      <span className="text-right text-lg font-bold text-white">
+        {datapaiment.montantapayer || 0} DT
+      </span>
+    </div>
+
+  </div>
+</div>
       <div className="bg-white px-13 py-6 border-t border-gray-100">
   {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-gray-600"> */}
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-sm text-gray-600">

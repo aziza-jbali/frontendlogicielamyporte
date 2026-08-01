@@ -87,7 +87,7 @@ export default function Invoicestep({
   try {
     const response = await pay(datap);
     setdatapaiment(datap)
- console.log("gytfrhfjfvjgv123")
+ console.log("facture was saved successfully")
     console.log(response);
 
   } catch (error) {
@@ -373,16 +373,17 @@ export default function Invoicestep({
         </div>
         <div className="transition-all  duration-300 ease-in-out text-center w-[50%] m-auto hover:bg-[#8C5A3C] hover:p-5 hover:rounded-2xl hover:shadow-2xl">
           {" "}
-                      <i class="fa-solid fa-floppy-disk"></i>
 
-          <button  className=" ml-2" onClick={() => {savePayment()}}>
-            Enregistrer la facture
+          <button  onClick={() => {savePayment()}}>
+                                
+
+            <p > <span> <i class="fa-solid fa-floppy-disk"></i></span>  Enregistrer la facture</p>
           </button>
         </div>
 
         <div className="mt-2">
           <h1 className="leading-relaxed text-center">
-            Logiciel de facturation développé par Aziza Jabli
+            Logiciel de facturation développé par Aziza Jbali
           </h1>
         </div>
       </div>

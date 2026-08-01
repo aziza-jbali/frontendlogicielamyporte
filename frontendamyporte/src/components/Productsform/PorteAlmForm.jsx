@@ -2,49 +2,55 @@ import React from "react";
 import { useState } from "react";
 import { costporte } from "../../services/apiGestionligne.js";
 
-export default function FenetreForm({ formdata, setformdata, invoice }) {
+export default function FenetreForm({ formdata,
+  setformdata,
+  invoice,
+  setOpen,
+  setRows,
+  Target,
+  index,
+  updateRow,
+  selectedRow,
+  setpayant }) {
   // console.log("fregardejjj",formdata)
   console.log("this is the invoice twa", invoice);
   console.log("this is the id of invoice", invoice._id);
-  const [Portedata, setPortedata] = useState({
-    // produit: "",
-    // largeur: "",
-    // hauteur: "",
-    couleur: "",
-    remplissage: "",
-
-    // quantite: formdata.quantite,
-  });
-  //   produit,
-  //   hauteur,
-  //   largeur,
-  //   choix,
-  //   couleur,
-  //   quantite,
-  //   factureId,
-  const datapor = {
-    ...Portedata,
-    produit: formdata.produit,
-    largeur: Number(formdata.largeur),
-    hauteur: Number(formdata.hauteur),
-
-    remplissagePorte: Portedata.remplissage,
-    choix: Portedata.choix,
-    quantite: formdata.quantite,
-    factureId: invoice._id,
-  };
-  console.log(typeof datapor.largeur);
-  console.log("data fen", datapor);
+ const [Portedata, setPortedata] = useState({
+  couleur: Target.couleur || "",
+  remplissagePorte: Target.remplissagePorte || "",
+  choix: Target.choix || "",
+});
+  
+ 
 
   const handlesubmit = async () => {
-    try {
-      co
-      const response = await costporte(datapor);
-      console.log("responsedata",response.data);
-      setformdata({...formdata, prixunitaire:response.data.prixUnitaire})
-    } catch (error) {
-      console.error("❌", error);
-    }
+    const datapor = {
+    
+    produit: Target.produit,
+      largeur: Number(Target.largeur),
+      hauteur: Number(Target.hauteur),
+      quantite: Number(Target.quantite),
+
+    remplissagePorte: Portedata.remplissagePorte,
+    choix: Portedata.choix,
+    couleur: Portedata.couleur,
+    factureId: invoice._id,
+  };
+   
+  console.log(typeof datapor.largeur);
+  console.log("data fen", datapor);
+     try {
+    const response = await costporte(datapor);
+
+    updateRow(selectedRow, "prixUnitaire", response.data.prixUnitaire);
+    updateRow(index, "montant", response.data.prixtotale);
+
+    setpayant((prev) => prev + response.data.prixtotale);
+
+    setOpen(false);
+  } catch (error) {
+    console.error("❌", error);
+  }
   };
   // prixunitaire:"",
   //     montant:""
@@ -68,6 +74,7 @@ export default function FenetreForm({ formdata, setformdata, invoice }) {
             onChange={(e) =>
               setPortedata({ ...Portedata, choix: e.target.value })
             }
+            
           >
             <option >-- Choisir--</option>
             <option value="1">Choix 1</option>
@@ -103,11 +110,11 @@ export default function FenetreForm({ formdata, setformdata, invoice }) {
           </label>
           <select
             className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#614c38]"
-            value={Portedata.remplissage}
+            value={Portedata.remplissagePorte}
             onChange={(e) =>
               setPortedata({
                 ...Portedata,
-                remplissage: e.target.value,
+                remplissagePorte: e.target.value,
               })
             }
           >
@@ -116,8 +123,8 @@ export default function FenetreForm({ formdata, setformdata, invoice }) {
             <option value="Tout lamette">Tout Lamette</option>
             <option value="Tout Claire">Tout Claire</option>
             <option value="Haut sbl / Bas lamette">Haut SBL / Bas Lamette </option>
-            <option value="Haut claire / Bas  lamette">Haut Lamette / Bas Claire</option>
-            <option value="Haut claire / Bas lamette">Haut Claire / Bas Lamette</option>
+            <option value="Haut claire / Bas  lamette">Haut Claire / Bas  Lamette</option>
+           
 
           </select>
         </div>

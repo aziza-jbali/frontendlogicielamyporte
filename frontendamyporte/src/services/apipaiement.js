@@ -10,7 +10,7 @@ export async function getpay(idinvoice){
     const response=axios.get(`${apiUrl}/getinvoicewithligne/${idinvoice}`)
         return response;
     } catch (error) {
-         console.error("Error fetching user by ID:", error);
+         console.error("Error counting the cost of monobloc:", error);
     throw error;
     }
 }

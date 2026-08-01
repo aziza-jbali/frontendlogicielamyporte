@@ -8,3 +8,13 @@ export async function costporte(portedata){
     const response =axios.post(`${apiUrl}/costporte`,portedata)
     return response;
 }
+export async function costmonobloc(monodata){
+    
+    try {
+        const response =axios.post(`${apiUrl}/costmonobloc`,monodata)
+    return response;
+    } catch (error) {
+           console.error("Error fetching user by ID:", error);
+    throw error;
+    }
+}

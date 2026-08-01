@@ -39,6 +39,7 @@ import React, { useState } from "react";
 
 import FenetreForm from "./Productsform/FenetreForm";
 import PorteAlmForm from "./Productsform/PorteAlmForm";
+import Monobloc from "./Productsform/MonoblocForm"
 import Addclientform from "./Clientform/Addclientform";
 import { XIcon } from "@animateicons/react/lucide";
 
@@ -90,12 +91,39 @@ export default function Popup({
 
         {activeform === "Porte aluminium" && (
           <PorteAlmForm
+            // formdata={formdata}
+            // setformdata={setformdata}
+            // invoice={invoice}
+            // setdatafinal={setdatafinal}
             formdata={formdata}
             setformdata={setformdata}
+            Target={Target}
+             index={index}
+             updateRow={updateRow}
             invoice={invoice}
             setdatafinal={setdatafinal}
+            setRows={setRows}
+            selectedRow={selectedRow}
+            setpayant={setpayant}
           />
         )}
+        {activeform === "Monobloc" &&(
+          < Monobloc
+            // formdata={formdata}
+            // setformdata={setformdata}
+            // invoice={invoice}
+            // setdatafinal={setdatafinal}
+            formdata={formdata}
+            setformdata={setformdata}
+            Target={Target}
+             index={index}
+             updateRow={updateRow}
+            invoice={invoice}
+            setdatafinal={setdatafinal}
+            setRows={setRows}
+            selectedRow={selectedRow}
+            setpayant={setpayant}
+          />)}
 
         {activeform === "client" && (
           <Addclientform
