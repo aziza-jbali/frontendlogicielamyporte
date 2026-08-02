@@ -4,7 +4,7 @@ import{getalllignesoffacture} from  "../services/apiGestioninvoice.js"
 
 import { Bell, Rocket, User, DoorOpen, Library, LogOut } from "lucide-react";
 
-export default function InvoicePdfstep({invoice,datapaiment,client}) {
+export default function InvoicePdfstep({invoice,datapaiment,client,handlePrint,ref}) {
   const[datainvoice,setdatainvoice]=useState([])
   console.log("ddd1477",datainvoice)
   console.log("datapaiment",datapaiment);
@@ -28,26 +28,22 @@ export default function InvoicePdfstep({invoice,datapaiment,client}) {
     fetchinvoice();
   }, []);
   return (
+    <>
+         <div className="flex justify-end mb-4 print:hidden">
+      <button
+        onClick={handlePrint}
+        className="bg-[#3B2414] hover:bg-[#5a3924] text-white px-5 py-2 rounded-lg shadow-md"
+      >
+        🖨️ Imprimer la facture
+      </button>
+    </div>
+
      <div className="w-80 relative bg-white   md:w-[300px] lg:w-[900px]       rounded-3xl  overflow-hidden   ">
       <div className="relative overflow-hidden h-70  bg-[#3B2414]        ">
         <div className="absolute w-72 h-72 rounded-full bg-[#6b4224] opacity-90 -top-25 -right-19 "></div>
-        <div className=" text-[#ffc186] bg-[#996e47] absolute right-12 rounded-2xl text-sm h-8 top-19 w-26 p-1 text-center border-1 font-bold border-[#ffcea0] ">
-          date
-          {/* <select
-            className="w-full rounded-xl border border-gray-300 px-4 py-3 bg-gray-50"
-            value={fenetredata.choix}
-            onChange={(e) =>
-              setfenetredata({
-                ...fenetredata,
-                choix: e.target.value,
-              })
-            }
-          >
-            <option value="">Choisir...</option>
-            <option value="1">Choix 1</option>
-            <option value="2">Choix 2</option>
-            <option value="3">Choix 3</option>
-          </select> */}
+        <div className=" text-[#ffc186] bg-[#996e47] absolute right-12 rounded-2xl text-sm h-8 top-19  p-1 text-center border-1 font-bold border-[#ffcea0] ">
+          <h1>Facture Passager</h1>
+        
         </div>
         <div className=" flex    w-1/3 gap-2 mt-8 ml-6">
           <div className=" font-bold">
@@ -69,18 +65,32 @@ export default function InvoicePdfstep({invoice,datapaiment,client}) {
       {/* <div className="absolute  top-56  md:w-[300px] lg:w-[800px]  w-80       px-3 ">
           <div className="    m-auto  lg:w-[150px]  md:w-[90px] rounded-4xl bg-white p-7 shadow-2xl ">helo</div>
         </div> */}
-      <div className="absolute top-57 w-80 md:w-[300px] lg:w-[900px] px-3 flex justify-center h-25  ">
-        <div className=" rounded-3xl bg-white p-4 lg:w-[780px] md:w-[270px] flex justify-between shadow-2xl text-[#b39376] ">
-          <div className=" w-1/2 px-2">
-            <p>FACTURE A : </p>
-            <p className="font-bold text-xl text-black">{client.nom || ""}</p>
-          </div>
-          <div className=" w-1/2 px-2  ">
-            <p className="">CONTACT :</p>
-            <p className="font-bold text-xl text-black">{client.numero || ""} </p>
-          </div>
-        </div>
-      </div>
+  <div className="absolute top-57 w-80 md:w-[300px] lg:w-[900px] px-3 flex justify-center h-25">
+  <div className="rounded-3xl bg-white p-5 lg:w-[780px] md:w-[270px] grid grid-cols-3 gap-6 shadow-2xl text-[#b39376]">
+
+    <div>
+      <p className="text-sm italic">FACTURE À :</p>
+      <p className="font-bold text-xl mt-2 text-black break-words">
+        {client.nom || ""}
+      </p>
+    </div>
+
+    <div>
+      <p className="text-sm italic">CONTACT :</p>
+      <p className="font-bold text-xl mt-2 text-black break-words">
+        {client.numero || ""}
+      </p>
+    </div>
+
+    <div>
+      <p className="text-sm italic">ADRESSE :</p>
+      <p className="font-bold text-xl mt-2 text-black break-words">
+        {client.adresse || ""}
+      </p>
+    </div>
+
+  </div>
+</div>
       <div className="mt-15 flex justify-center    ">
         <div className="w-full max-w-4xl  p-4 rounded-xl">
           {/* Header */}
@@ -258,7 +268,7 @@ export default function InvoicePdfstep({invoice,datapaiment,client}) {
 </div>
       <div className="bg-white px-13 py-6 border-t border-gray-100">
   {/* <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm text-gray-600"> */}
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-sm text-gray-600">
+  {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-sm text-gray-600">
     <div>
       <h4 className="font-bold text-[#3B2414] mb-2 tracking-wide">
         SHOWROOM
@@ -284,8 +294,38 @@ export default function InvoicePdfstep({invoice,datapaiment,client}) {
     </div>
 
    
+  </div> */}
+  <div className="grid grid-cols-3 gap-8 text-sm text-gray-600">
+  {/* Showroom */}
+  <div>
+    <h4 className="font-bold text-[#3B2414] mb-2">SHOWROOM</h4>
+    <address className="not-italic leading-relaxed space-y-0.5">
+      <p>Mjez le Beb, Derrière Bank BNA</p>
+      <p>165, Rue Khaled Ibn Walid</p>
+      <p>Douar Hicher, Manouba</p>
+      <p>Riadh Zouhour, Rue Mateur</p>
+    </address>
   </div>
-   <div className="mt-2">
+
+  {/* Contact */}
+  <div>
+    <h4 className="font-bold text-[#3B2414] mb-2">CONTACT</h4>
+    <ul className="leading-relaxed space-y-0.5">
+    <li>51 075 024</li>
+      <li>98 588 585</li>
+      <li>98 626 396</li>
+      
+      <li>58 277 351</li>
+    </ul>
+  </div>
+
+  {/* Signature */}
+  <div>
+    <h4 className="font-bold text-[#3B2414] mb-2">SIGNATURE</h4>
+    <div className="h-24 border border-gray-400 rounded-md"></div>
+  </div>
+</div>
+   <div className="mt-4">
      
       <h1 className="leading-relaxed text-center">
         Logiciel de facturation développé par Aziza Jabli
@@ -294,5 +334,6 @@ export default function InvoicePdfstep({invoice,datapaiment,client}) {
   
 </div>
     </div>
+    </>
   )
 }
