@@ -4,8 +4,8 @@ import{getalllignesoffacture} from  "../services/apiGestioninvoice.js"
 
 import { Bell, Rocket, User, DoorOpen, Library, LogOut } from "lucide-react";
 
-export default function InvoicePdfstep({invoice,datapaiment,client,handlePrint,ref}) {
-  const[datainvoice,setdatainvoice]=useState([])
+export default function InvoicePdfstep({invoice,datapaiment,client,handlePrint,ref,datainvoice, setdatainvoice}) {
+ 
   console.log("ddd1477",datainvoice)
   console.log("datapaiment",datapaiment);
     useEffect(() => {
@@ -235,34 +235,64 @@ export default function InvoicePdfstep({invoice,datapaiment,client,handlePrint,r
 
 
       
-      <div className="w-[90%] mx-auto mb-4 rounded-3xl bg-[#3B2414] p-6 shadow-xl">
+  <div className="w-[90%] mx-auto mb-4 rounded-3xl bg-[#3B2414] p-6 shadow-xl">
   <div className="space-y-4 text-[#d2b49c]">
 
-    <div className="grid grid-cols-2 border-b border-[#6b4a35] pb-3">
-      <span className="font-bold">Type de paiement :</span>
-      <span className="text-right font-bold text-xl ">{datapaiment.typepaiement || "-"}</span>
+    {/* Type paiement + Montant */}
+    <div className="grid grid-cols-2 border-b border-[#6b4a35] pb-3 gap-4">
+
+      
+
+
+      <div className="font-bold text-lg">
+        Montant à payer :
+      </div>
+
+      <div className="text-right text-lg font-bold text-white">
+        {datapaiment.montantapayer || 0} DT
+      </div>
+      <div className="font-bold text-lg">
+        Type de paiement :
+      </div>
+
+      <div className="text-right  text-lg font-bold text-white">
+        {datapaiment.typepaiement || "-"}
+      </div>
+
     </div>
 
+
+
+    {/* Acompte */}
     {datapaiment.typepaiement === "acompte" && (
-      <div className="grid grid-cols-2 gap-y-2 border-b border-[#6b4a35] pb-3">
-        <span className="font-bold ">Acompte :</span>
-        <span className="text-right">
+      <div className="
+        grid 
+        grid-cols-2 
+        gap-y-2
+        border-b 
+        border-[#6b4a35]
+        pb-3
+      ">
+
+        <span className="font-bold text-lg">
+          Acompte :
+        </span>
+
+        <span className="text-right text-lg font-bold text-white">
           {datapaiment.montantapayer - datapaiment.reste} DT
         </span>
 
-        <span className="font-bold">Reste :</span>
-        <span className="text-right">
+
+        <span className="font-bold text-lg">
+          Reste :
+        </span>
+
+        <span className="text-right text-lg font-bold text-white text-lg">
           {datapaiment.reste} DT
         </span>
+
       </div>
     )}
-
-    <div className="grid grid-cols-2">
-      <span className="font-bold text-lg">Montant à payer :</span>
-      <span className="text-right text-lg font-bold text-white">
-        {datapaiment.montantapayer || 0} DT
-      </span>
-    </div>
 
   </div>
 </div>

@@ -4,27 +4,9 @@ import { getalllignesoffacture } from "../services/apiGestioninvoice.js";
 import { notification } from "./toastService.js";
 
 const InvoicePrint = forwardRef(
-  ({ invoice, datapaiment, client }, ref) => {
+  ({ invoice, datapaiment, client,datainvoice }, ref) => {
 
-    const [datainvoice, setdatainvoice] = useState([]);
-
-    useEffect(() => {
-      const fetchinvoice = async () => {
-        try {
-          const response = await getalllignesoffacture(invoice._id);
-          setdatainvoice(response.data);
-        } catch (error) {
-          console.error(error);
-          notification.error(
-            "Impossible de charger la facture demandée."
-          );
-        }
-      };
-
-      if (invoice?._id) {
-        fetchinvoice();
-      }
-    }, [invoice]);
+  console.log("datahhhhhh",datainvoice)
 
 
     return (
@@ -241,7 +223,7 @@ const InvoicePrint = forwardRef(
 
         {/* PAYMENT */}
 
-        <div className="
+        {/* <div className="
           w-[90%]
           mx-auto
           mt-8
@@ -252,6 +234,29 @@ const InvoicePrint = forwardRef(
 
 
           <div className="text-[#d2b49c] space-y-4">
+            <div className="grid grid-cols-2">
+
+              <span className="
+                font-bold
+                text-lg
+              ">
+                Montant à payer :
+              </span>
+
+
+              <span className="
+                text-right
+                text-lg
+                text-white
+                font-bold
+              ">
+
+                {datapaiment.montantapayer || 0} DT
+
+              </span>
+
+
+            </div>
 
 
             <div className="
@@ -315,36 +320,123 @@ const InvoicePrint = forwardRef(
 
 
 
-            <div className="grid grid-cols-2">
-
-              <span className="
-                font-bold
-                text-lg
-              ">
-                Montant à payer :
-              </span>
-
-
-              <span className="
-                text-right
-                text-lg
-                text-white
-                font-bold
-              ">
-
-                {datapaiment.montantapayer || 0} DT
-
-              </span>
-
-
-            </div>
+            
 
 
 
           </div>
 
 
+        </div> */}
+        <div
+  className="
+    w-[90%]
+    mx-auto
+    mt-8
+    rounded-3xl
+    bg-[#3B2414]
+    p-6
+    shadow-xl
+  "
+>
+
+  <div className="text-[#d2b49c] space-y-4">
+
+
+    {/* Montant + Type paiement */}
+    <div
+      className="
+        grid 
+        grid-cols-2
+        border-b
+        border-[#6b4a35]
+        pb-3
+        gap-4
+      "
+    >
+
+      <div className="font-bold text-lg">
+        Montant à payer :
+      </div>
+
+      <div className="
+        text-right
+        text-lg
+        font-bold
+        text-white
+      ">
+        {datapaiment.montantapayer || 0} DT
+      </div>
+
+
+
+      <div className="font-bold text-lg">
+        Type de paiement :
+      </div>
+
+      <div className="
+        text-right
+        text-xl
+        font-bold
+        text-white
+      ">
+        {datapaiment.typepaiement || "-"}
+      </div>
+
+
+    </div>
+
+
+
+
+    {/* Acompte */}
+    {
+      datapaiment.typepaiement === "acompte" && (
+
+        <div
+          className="
+            grid
+            grid-cols-2
+            gap-y-2
+            border-b
+            border-[#6b4a35]
+            pb-3
+          "
+        >
+
+          <div className="font-bold text-lg">
+            Acompte :
+          </div>
+
+          <div className="text-right text-lg
+        font-bold
+        text-white">
+            {
+              datapaiment.montantapayer -
+              datapaiment.reste
+            } DT
+          </div>
+
+
+
+          <div className="font-bold text-lg">
+            Reste :
+          </div>
+
+          <div className="text-right text-lg text-white">
+            {datapaiment.reste} DT
+          </div>
+
+
         </div>
+
+      )
+    }
+
+
+  </div>
+
+</div>
 
 
 

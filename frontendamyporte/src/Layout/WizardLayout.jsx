@@ -55,7 +55,7 @@ export default function WizardLayout() {
   const [datafinal, setdatafinal] = useState({});
   const [datapaiment, setdatapaiment] = useState({});
   const [Myposition, setMyposition] = useState(1);
-
+const [datainvoice,setdatainvoice] = useState([]);
 
 
   const handlePrint = useReactToPrint({
@@ -117,6 +117,7 @@ export default function WizardLayout() {
           handlePrint={handlePrint}
           client={client}
           datapaiment={datapaiment}
+          datainvoice={datainvoice} setdatainvoice={setdatainvoice}
         />
       )}
 
@@ -125,13 +126,18 @@ export default function WizardLayout() {
 
 
       {/* PRINT VERSION ONLY */}
-      <div className="hidden">
+      <div   style={{
+    position: "absolute",
+    left: "-9999px",
+    top: "0"
+  }}>
 
         <InvoicePrint
           ref={invoiceRef}
           invoice={invoice}
           client={client}
           datapaiment={datapaiment}
+          datainvoice={datainvoice}
         />
 
       </div>
